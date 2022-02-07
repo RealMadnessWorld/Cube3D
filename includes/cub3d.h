@@ -13,8 +13,28 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include "libft.h"
+# include "colors.h"
+# include "keycode_mac.h"
 # include <mlx.h>
 # include <stdio.h>
+
+/****************************\
+*		  Defenitions		 *
+\****************************/
+
+# define TITLE "principle vagina"
+# define WIN_H 800
+# define WIN_W 1200
+# define KEYPRESS 2
+# define KEYRELEASE 3
+# define X_EVENT_KEY_EXIT 17
+
+# define KEY_ESCAPE 53
+
+/****************************\
+*		  Structures		 *
+\****************************/
 
 typedef struct	s_my_d
 {
@@ -24,5 +44,16 @@ typedef struct	s_my_d
 	int		line_lenght;
 	int		endian;
 }				t_data;
+
+/****************************\
+*		  Functions			 *
+\****************************/
+
+/*
+** Map functions
+*/
+
+void	create_map(char	*map, t_data *d);
+
 
 #endif
