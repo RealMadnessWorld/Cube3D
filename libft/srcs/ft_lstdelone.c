@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarsenio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2021/05/05 19:20:50 by jarsenio         ###   ########.fr       */
+/*   Created: 2021/03/09 16:30:36 by jarsenio          #+#    #+#             */
+/*   Updated: 2021/03/09 16:31:16 by jarsenio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../includes/libft.h"
 
-# include <mlx.h>
-
-typedef struct	s_my_d
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_lenght;
-	int		endian;
-}				t_data;
-
-#endif
+	if (!lst)
+		return ;
+	del(lst->content);
+	free(lst);
+}

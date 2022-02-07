@@ -33,4 +33,5 @@ int main()
     my_mlx_pixel_puta(&img, 300, 300, 0x00FF0000);
     mlx_put_image_to_window(cube, cube_window, img.img, 0, 0);
     mlx_loop(cube);
+    printf("hi\n");
 }
