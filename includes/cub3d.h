@@ -36,8 +36,24 @@
 *		  Structures		 *
 \****************************/
 
+typedef struct	s_map
+{
+	char	**map;
+	char	*no_img;
+	char	*so_img;
+	char	*we_img;
+	char	*ea_img;
+	char	*f_img;
+	char	*c_img;
+	int		width;
+	int		height;
+	int		play_x;
+	int		play_y;
+}				t_map;
+
 typedef struct	s_my_d
 {
+	t_map	map;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
