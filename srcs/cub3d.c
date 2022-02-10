@@ -12,14 +12,30 @@
 
 #include "cub3d.h"
 
+void	vars_init(t_data *d)
+{
+	d->map.c_img = NULL;
+	d->map.f_img = NULL;
+	d->map.no_img = NULL;
+	d->map.so_img = NULL;
+	d->map.we_img = NULL;
+	d->map.ea_img = NULL;
+	d->map.width = 0;
+	d->map.height = 0;
+	d->map.play_x = 0;
+	d->map.play_y = 0;
+	d->map.play_starts = 0;
+}
+
 int main(int argc, char **argv)
 {
-	t_data *d;
+	t_data d;
 
 	if (argc != 2)
-		ft_error("I need a map. And one map only!");
-	create_map(argv[1], d);
-	
+		ft_error("Error: I need a map. And one map only!\n");
+	vars_init(&d);
+	create_map(argv[1], &d);
+	print_map_shit(&d);
 }
 
 

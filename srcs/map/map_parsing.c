@@ -1,0 +1,79 @@
+#include "cub3d.h"
+
+int	is_image(char *str)
+{
+	if (str[0] == 'N' && str[1] == 'O')
+		return (1);
+	else if (str[0] == 'S' && str[1] == 'O')
+		return (1);
+	else if (str[0] == 'W' && str[1] == 'E')
+		return (1);
+	else if (str[0] == 'E' && str[1] == 'A')
+		return (1);
+	else if (str[0] == 'C')
+		return (1);
+	else if (str[0] == 'F')
+		return (1);
+	else
+		return (0);
+}
+
+void	color_saver(char **save, char *str)
+{
+	int	i;
+
+	i = 2;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]) && str[i] != ',')
+			ft_error("Error: I know it's confusing but colors here are made out of numbers... weird I know!");
+		i++;
+	}
+	if (!*save)
+		*save = ft_strdup(ft_strnstr(str, ft_strchr(str, str[2]), ft_strlen(str)));
+	else
+		ft_error("Error: twice the same color? 🤔\n");
+}
+
+void	img_saver(char **save, char *str)
+{
+	if (!*save)
+		*save = ft_strdup(ft_strnstr(str, "./", ft_strlen(str)));
+	else
+		ft_error("Error: twice the same image? 🤔\n");
+	chk_img_path(*save);
+}
+
+void	img_dealer(t_data *d, char *str)
+{
+	if (str[0] == 'N' && str[1] == 'O')
+		img_saver(&d->map.no_img, str);
+	if (str[0] == 'S' && str[1] == 'O')
+		img_saver(&d->map.so_img, str);
+	if (str[0] == 'W' && str[1] == 'E')
+		img_saver(&d->map.we_img, str);
+	if (str[0] == 'E' && str[1] == 'A')
+		img_saver(&d->map.ea_img, str);
+	if (str[0] == 'F')
+		color_saver(&d->map.f_img, str);
+	if (str[0] == 'C')
+		color_saver(&d->map.c_img, str);
+}
+
+void	create_map(char	*map, t_data *d)
+{
+	int		ret;
+	int		fd;
+	char	*line;
+
+	fd = open(map, O_RDONLY);
+	ret = get_next_line(fd, &line);
+	while(ret == 1)
+	{
+		if (is_image(line))
+			img_dealer(d, line);
+		// else if ()
+		ret = get_next_line(fd, &line);
+	}
+	verify(d);
+}

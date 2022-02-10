@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./imgs/75aa2c5f6ea1e84ecd195af9ddcd6216--hand-painted-textures-texture-cartoon.jpg
+SO ./imgs/147637101.jpg
+WE ./imgs/240_F_114739098_K6YMavKJf6T2H9tdl3JCPckdctHrcAIm.jpg
+EA ./imgs/hacker-sombra-overwatch-video-game-wallpaper-2800x2100_28.jpg
 
 F 220,100,0
 C 225,30,0

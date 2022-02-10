@@ -13,7 +13,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "libft.h"
+# include "../libft/includes/libft.h"
 # include "colors.h"
 # include "keycode_mac.h"
 # include <mlx.h>
@@ -49,6 +49,8 @@ typedef struct	s_map
 	int		height;
 	int		play_x;
 	int		play_y;
+	char	play_dir;
+	int		play_starts;
 }				t_map;
 
 typedef struct	s_my_d
@@ -71,5 +73,16 @@ typedef struct	s_my_d
 
 void	create_map(char	*map, t_data *d);
 
+/*
+** Verifications
+*/
+
+void	verify(t_data *d);
+
+/*
+** DEBBUGING
+*/
+
+void	print_map_shit(t_data *d);
 
 #endif

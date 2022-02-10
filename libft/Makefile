@@ -28,7 +28,7 @@ SRCS		=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 				ft_putstr_fd.c ft_split.c ft_strjoin.c ft_strtrim.c \
 				ft_substr.c ft_strmapi.c ft_itoa.c get_next_line.c \
 				ft_error.c find_ext.c check_img_path.c random_num_gen.c \
-				gnl_func.c ft_strcmp.c
+				gnl_func.c ft_strcmp.c valid_path.c
 HEADERS		= ft_printf.h get_next_line.h libft.h
 
 OBJS = $(SRCS:.c=.o)
