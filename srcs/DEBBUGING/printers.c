@@ -10,6 +10,8 @@ void	print_validation(char *str)
 
 void	print_map_shit(t_data *d)
 {
+	int i = 0;
+
 	printf(CLR_RED"\n			IMAGES AND COLORS\n\n"CLR_RST);
 
 	printf(CLR_YLW"NO -> ");
@@ -38,9 +40,9 @@ void	print_map_shit(t_data *d)
 	printf(CLR_YLW"C ->  ");
 	printf(CLR_CYN"\"%s\"\n"CLR_RST, d->map.c_img);
 
-	printf(CLR_BLU"\n\n--------------------------------\n"CLR_RST);
-	printf(CLR_RED"\n				MAP\n\n"CLR_RST);
+	printf(CLR_BLU"\n		--------------------------------\n"CLR_RST);
+	printf(CLR_RED"				MAP\n"CLR_RST);
 
-
-
+	while(d->map.map[i])
+		printf(CLR_GRN"%s\n"CLR_RST, d->map.map[i++]);
 }

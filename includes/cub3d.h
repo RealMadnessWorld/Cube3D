@@ -72,12 +72,20 @@ typedef struct	s_my_d
 */
 
 void	create_map(char	*map, t_data *d);
+void	map_dealer(t_data *d, char *str);
 
 /*
 ** Verifications
 */
 
 void	verify(t_data *d);
+int		ready_to_map(t_data *d);
+
+/*
+** Utils
+*/
+
+void	be_free(t_data *d);
 
 /*
 ** DEBBUGING

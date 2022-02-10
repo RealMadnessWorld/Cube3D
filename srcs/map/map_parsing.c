@@ -20,19 +20,23 @@ int	is_image(char *str)
 
 void	color_saver(char **save, char *str)
 {
-	int	i;
+	int		i;
+	char	*idk;
 
 	i = 2;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]) && str[i] != ',')
-			ft_error("Error: I know it's confusing but colors here are made out of numbers... weird I know!");
+			ft_error("Error: Colors are made of numbers... weird I know!\n");
 		i++;
 	}
 	if (!*save)
-		*save = ft_strdup(ft_strnstr(str, ft_strchr(str, str[2]), ft_strlen(str)));
+	{
+		idk = ft_strchr(str, str[2]);
+		*save = ft_strdup(ft_strnstr(str, idk, ft_strlen(str)));
+	}
 	else
-		ft_error("Error: twice the same color? 🤔\n");
+		ft_error("Error: twice the same color for roof or floor? 🤔\n");
 }
 
 void	img_saver(char **save, char *str)
@@ -40,7 +44,7 @@ void	img_saver(char **save, char *str)
 	if (!*save)
 		*save = ft_strdup(ft_strnstr(str, "./", ft_strlen(str)));
 	else
-		ft_error("Error: twice the same image? 🤔\n");
+		ft_error("Error: twice the same image direction? 🤔\n");
 	chk_img_path(*save);
 }
 
@@ -67,13 +71,15 @@ void	create_map(char	*map, t_data *d)
 	char	*line;
 
 	fd = open(map, O_RDONLY);
-	ret = get_next_line(fd, &line);
+	ret = 1;
 	while(ret == 1)
 	{
+		ret = get_next_line(fd, &line);
 		if (is_image(line))
 			img_dealer(d, line);
-		// else if ()
-		ret = get_next_line(fd, &line);
+		else if (ready_to_map(d))
+			map_dealer(d, line);
 	}
+	d->map.map[d->map.height] = NULL;
 	verify(d);
 }

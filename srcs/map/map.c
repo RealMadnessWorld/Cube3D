@@ -24,6 +24,22 @@ int	check_chars(char *str, char *chars)
 	return (1);
 }
 
+void	start_map(t_data *d)
+{
+	if (!d->map.map)
+		d->map.map = (char **)malloc(sizeof(char *) * d->map.height);
+	else
+		d->map.map = (char **)realloc(d->map.map, sizeof(char *) * d->map.height);
+}
+
+// void	square_map(t_data *d, int	width)
+// {
+// 	int	i;
+
+// 	i = -1;
+// 	if ((int)ft_strlen(d->map.map[++i]))
+// }
+
 void	map_dealer(t_data *d, char *str)
 {
 	if (!check_chars(str, " 10NEWS"))
@@ -31,5 +47,6 @@ void	map_dealer(t_data *d, char *str)
 	if ((int)ft_strlen(str) > d->map.width)
 		d->map.width = ft_strlen(str);
 	d->map.height += 1;
-
+	start_map(d);
+	d->map.map[d->map.height - 1] = ft_strdup(str);
 }
