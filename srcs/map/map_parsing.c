@@ -81,5 +81,7 @@ void	create_map(char	*map, t_data *d)
 			map_dealer(d, line);
 	}
 	d->map.map[d->map.height] = NULL;
+	square_map(d, d->map.width);
+	map_closed(d, d->map.map);
 	verify(d);
 }

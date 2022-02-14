@@ -40,9 +40,16 @@ void	print_map_shit(t_data *d)
 	printf(CLR_YLW"C ->  ");
 	printf(CLR_CYN"\"%s\"\n"CLR_RST, d->map.c_img);
 
-	printf(CLR_BLU"\n		--------------------------------\n"CLR_RST);
-	printf(CLR_RED"				MAP\n"CLR_RST);
+	printf(CLR_BLU"\n		--------------------------------\n\n"CLR_RST);
+	printf(CLR_RED"				MAP\n\n"CLR_RST);
+
+	printf(CLR_YLW"player starting y position: "CLR_RST);
+	printf(CLR_CYN"%i\n"CLR_RST, d->map.play_y);
+	printf(CLR_YLW"player starting x position: "CLR_RST);
+	printf(CLR_CYN"%i\n\n"CLR_RST, d->map.play_x);
 
 	while(d->map.map[i])
 		printf(CLR_GRN"%s\n"CLR_RST, d->map.map[i++]);
+
+	printf(CLR_RED"\nDONT FORGET THAT THE PROGRAM DOESNT CHECK FOR EXTENSIONS YET!!!!!\n"CLR_RST);
 }

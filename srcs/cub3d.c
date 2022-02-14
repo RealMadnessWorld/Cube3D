@@ -22,8 +22,8 @@ void	vars_init(t_data *d)
 	d->map.ea_img = NULL;
 	d->map.width = 0;
 	d->map.height = 0;
-	d->map.play_x = 0;
-	d->map.play_y = 0;
+	d->map.play_x = -1;
+	d->map.play_y = -1;
 	d->map.play_starts = 0;
 }
 
