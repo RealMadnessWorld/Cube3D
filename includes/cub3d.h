@@ -73,6 +73,7 @@ typedef struct	s_my_d
 
 void	create_map(char	*map, t_data *d);
 void	map_dealer(t_data *d, char *str);
+void	square_map(t_data *d, int	width);
 
 /*
 ** Verifications
@@ -80,12 +81,17 @@ void	map_dealer(t_data *d, char *str);
 
 void	verify(t_data *d);
 int		ready_to_map(t_data *d);
+int		check_chars(char *str, char *chars);
+void	map_closed(t_data *d, char **map);
 
 /*
 ** Utils
 */
 
+int		is_empty(char *str);
 void	be_free(t_data *d);
+int		is_char(char c, char *str);
+int		is_empty(char *str);
 
 /*
 ** DEBBUGING
