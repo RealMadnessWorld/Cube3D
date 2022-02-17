@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarsenio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2021/05/05 19:20:50 by jarsenio         ###   ########.fr       */
+/*   Updated: 2022/02/15 01:52:21 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "keycode_mac.h"
 # include <mlx.h>
 # include <stdio.h>
+# include <math.h>
 
 /****************************\
 *		  Defenitions		 *

@@ -1,42 +1,42 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jarsenio <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 19:19:17 by jarsenio          #+#    #+#             */
-/*   Updated: 2021/05/05 19:19:20 by jarsenio         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// /* ************************************************************************** */
+// /*                                                                            */
+// /*                                                        :::      ::::::::   */
+// /*   cub3d.c                                            :+:      :+:    :+:   */
+// /*                                                    +:+ +:+         +:+     */
+// /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
+// /*                                                +#+#+#+#+#+   +#+           */
+// /*   Created: 2021/05/05 19:19:17 by jarsenio          #+#    #+#             */
+// /*   Updated: 2022/02/14 20:01:47 by fmeira           ###   ########.fr       */
+// /*                                                                            */
+// /* ************************************************************************** */
 
-#include "cub3d.h"
+// #include "cub3d.h"
 
-void	vars_init(t_data *d)
-{
-	d->map.c_img = NULL;
-	d->map.f_img = NULL;
-	d->map.no_img = NULL;
-	d->map.so_img = NULL;
-	d->map.we_img = NULL;
-	d->map.ea_img = NULL;
-	d->map.width = 0;
-	d->map.height = 0;
-	d->map.play_x = -1;
-	d->map.play_y = -1;
-	d->map.play_starts = 0;
-}
+// void	vars_init(t_data *d)
+// {
+// 	d->map.c_img = NULL;
+// 	d->map.f_img = NULL;
+// 	d->map.no_img = NULL;
+// 	d->map.so_img = NULL;
+// 	d->map.we_img = NULL;
+// 	d->map.ea_img = NULL;
+// 	d->map.width = 0;
+// 	d->map.height = 0;
+// 	d->map.play_x = -1;
+// 	d->map.play_y = -1;
+// 	d->map.play_starts = 0;
+// }
 
-int main(int argc, char **argv)
-{
-	t_data d;
+// // int main(int argc, char **argv)
+// // {
+// // 	t_data d;
 
-	if (argc != 2)
-		ft_error("Error: I need a map. And one map only!\n");
-	vars_init(&d);
-	create_map(argv[1], &d);
-	print_map_shit(&d);
-}
+// // 	if (argc != 2)
+// // 		ft_error("Error: I need a map. And one map only!\n");
+// // 	vars_init(&d);
+// // 	create_map(argv[1], &d);
+// // 	print_map_shit(&d);
+// // }
 
 
 
@@ -48,7 +48,7 @@ int main(int argc, char **argv)
 // 	*(unsigned int *)dst = color;
 // }
 
-// int main(int argc, char **argv)
+// int main(void)
 // {
 // 	void *cube;
 // 	void *cube_window;
