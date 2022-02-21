@@ -28,7 +28,7 @@ void	map_closed(t_data *d, char **map)
 		while (map[y][x])
 		{
 			if (is_char(map[y][x], "0EWSN") && !zero_surr(map, x, y))
-				ft_error("Map not closed. You can't trick me! I am machine!!\n");
+				ft_err(d, "Map not closed. You can't trick me! I am machine!!\n");
 			if (is_char(map[y][x], "EWSN"))
 			{
 				if (d->map.play_x == -1 && d->map.play_y == -1)
@@ -37,7 +37,7 @@ void	map_closed(t_data *d, char **map)
 					d->map.play_y = y;
 				}
 				else
-					ft_error("this is a single player game. That means ONE starting position\n");
+					ft_err(d, "this is a single player game. That means ONE starting position\n");
 			}
 			x++;
 		}

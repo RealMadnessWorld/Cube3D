@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 	t_data d;
 
 	if (argc != 2)
-		ft_error("Error: I need a map. And one map only!\n");
+		ft_err(&d, "Error: I need a map. And one map only!\n");
 	vars_init(&d);
 	create_map(argv[1], &d);
 	print_map_shit(&d);

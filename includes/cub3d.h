@@ -92,6 +92,7 @@ int		is_empty(char *str);
 void	be_free(t_data *d);
 int		is_char(char c, char *str);
 int		is_empty(char *str);
+void	ft_err(t_data *d, char *error);
 
 /*
 ** DEBBUGING
