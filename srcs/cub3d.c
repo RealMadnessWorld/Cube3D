@@ -41,6 +41,7 @@ int main(int argc, char **argv)
 	d.addr = mlx_get_data_addr(d.img, &d.bits_per_pixel, &d.line_lenght, &d.endian);
 	print_map_shit(&d);
 	mlx_loop_hook(d.cube, &visuals, &d);
+	mlx_hook(d.window, KEYPRESS, (1L << 0), &key_press, &d);
 	mlx_hook(d.window, X_EVENT_KEY_EXIT, 0, &x_click, &d);
 	mlx_loop(d.cube);
 }

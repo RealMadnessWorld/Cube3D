@@ -15,7 +15,8 @@
 
 # include "../libft/includes/libft.h"
 # include "colors.h"
-# include "keycode_mac.h"
+// # include "keycode_mac.h"
+# include "key_linux.h"
 # include <mlx.h>
 # include <stdio.h>
 # include <math.h>
@@ -126,6 +127,12 @@ void	verify(t_data *d);
 int		ready_to_map(t_data *d);
 int		check_chars(char *str, char *chars);
 void	map_closed(t_data *d, char **map);
+
+/*
+** key handling
+*/
+
+int	key_press(int key, t_data *d, t_calc *c);
 
 /*
 ** Utils
