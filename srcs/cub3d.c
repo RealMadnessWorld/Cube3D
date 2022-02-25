@@ -35,18 +35,19 @@ int main(int argc, char **argv)
 		ft_err(&d, "Error: I need a map. And one map only!\n");
 	vars_init(&d);
 	create_map(argv[1], &d);
+	d.cube = mlx_init();
+	d.window = mlx_new_window(d.cube, 600, 600, "\"fuck you\" that's my name");
+	d.img = mlx_new_image(d.cube, 600, 600);
+	d.addr = mlx_get_data_addr(d.img, &d.bits_per_pixel, &d.line_lenght, &d.endian);
 	print_map_shit(&d);
+	mlx_loop_hook(d.cube, &visuals, &d);
+	mlx_hook(d.window, X_EVENT_KEY_EXIT, 0, &x_click, &d);
+	mlx_loop(d.cube);
 }
 
 
 
-// void    my_mlx_pixel_puta(t_data *img, int y, int x, int color)
-// {
-// 	char *dst;
 
-// 	dst = img->addr + (y * img->line_lenght + x * (img->bits_per_pixel / 8));
-// 	*(unsigned int *)dst = color;
-// }
 
 // int main(int argc, char **argv)
 // {
@@ -54,12 +55,7 @@ int main(int argc, char **argv)
 // 	void *cube_window;
 // 	t_data img;
 
-// 	cube = mlx_init();
-// 	cube_window = mlx_new_window(cube, 600, 600, "fuck you that's my name");
-// 	img.img = mlx_new_image(cube, 600, 600);
-// 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_lenght, &img.endian);
 // 	my_mlx_pixel_puta(&img, 300, 300, 0x00FF0000);
-// 	mlx_put_image_to_window(cube, cube_window, img.img, 0, 0);
-// 	mlx_loop(cube);
+// 	mlx_put_image_to_window(cube, cube_window, d.img, 0, 0);
 // 	printf("hi\n");
 // }

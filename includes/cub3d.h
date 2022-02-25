@@ -18,6 +18,7 @@
 # include "keycode_mac.h"
 # include <mlx.h>
 # include <stdio.h>
+# include <math.h>
 
 /****************************\
 *		  Defenitions		 *
@@ -36,6 +37,38 @@
 *		  Structures		 *
 \****************************/
 
+typedef struct	s_calc
+{
+	double	cameraX;
+	double	rayDirX;
+	double	rayDirY;
+	double	sideDistX;
+	double	sideDistY;
+	double	deltaDistX;
+	double	deltaDistY;
+	double	perpWallDist;
+	int		color;
+	int		lineHeight;
+	int		drawStart;
+	int		drawEnd;
+	int		mapX;
+	int		mapY;
+	int		stepX;
+	int		stepY;
+	int		hit;
+	int		side;
+	double posX;
+	double posY;
+	double dirX;
+	double dirY;
+	double planeX;
+	double planeY;
+	void	*mlx;
+	void	*win;
+	double	moveSpeed;
+	double	rotSpeed;
+}				t_calc;
+
 typedef struct	s_map
 {
 	char	**map;
@@ -45,17 +78,19 @@ typedef struct	s_map
 	char	*ea_img;
 	char	*f_img;
 	char	*c_img;
+	char	play_dir;
 	int		width;
 	int		height;
 	int		play_x;
 	int		play_y;
-	char	play_dir;
 	int		play_starts;
 }				t_map;
 
 typedef struct	s_my_d
 {
 	t_map	map;
+	void	*cube;
+	void	*window;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -76,6 +111,14 @@ void	map_dealer(t_data *d, char *str);
 void	square_map(t_data *d, int	width);
 
 /*
+** raycasting
+*/
+
+int		visuals(t_data *d);
+void	calcs(t_data *d);
+void	ver_line(t_calc *c, t_data *d, int x);
+
+/*
 ** Verifications
 */
 
@@ -93,6 +136,8 @@ void	be_free(t_data *d);
 int		is_char(char c, char *str);
 int		is_empty(char *str);
 void	ft_err(t_data *d, char *error);
+char	*verify_img_path(char *path, t_data *d);
+int		x_click(t_data *d);
 
 /*
 ** DEBBUGING

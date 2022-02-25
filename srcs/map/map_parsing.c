@@ -45,7 +45,7 @@ void	img_saver(t_data *d, char **save, char *str)
 		*save = ft_strdup(ft_strnstr(str, "./", ft_strlen(str)));
 	else
 		ft_err(d, "Error: twice the same image direction? 🤔\n");
-	chk_img_path(*save);
+	verify_img_path(*save, d);
 }
 
 void	img_dealer(t_data *d, char *str)

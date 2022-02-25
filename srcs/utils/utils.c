@@ -44,3 +44,10 @@ int	ready_to_map(t_data *d)
 		return (1);
 	return (0);
 }
+
+char	*verify_img_path(char *path, t_data *d)
+{
+	if (open((path), O_RDONLY) < 0)
+		ft_err(d, CLR_RED "You're lacking the images... focus please\n" CLR_RST);
+	return (path);
+}

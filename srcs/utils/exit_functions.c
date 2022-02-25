@@ -7,3 +7,9 @@ void	ft_err(t_data *d, char *error)
 	be_free(d);
 	exit (EXIT_FAILURE);
 }
+
+int	x_click(t_data *d)
+{
+	be_free(d);
+	exit(EXIT_SUCCESS);
+}
