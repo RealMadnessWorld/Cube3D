@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	check_chars(char *str, char *chars)
 {

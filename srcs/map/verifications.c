@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	zero_surr(char **map, int x, int y)
 {
