@@ -18,7 +18,7 @@ int	is_image(char *str)
 		return (0);
 }
 
-void	color_saver(char **save, char *str)
+void	color_saver(t_data *d, char **save, char *str)
 {
 	int		i;
 	char	*idk;
@@ -27,7 +27,7 @@ void	color_saver(char **save, char *str)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]) && str[i] != ',')
-			ft_error("Error: Colors are made of numbers... weird I know!\n");
+			ft_err(d, "Error: Colors are made of numbers... weird I know!\n");
 		i++;
 	}
 	if (!*save)
@@ -36,32 +36,32 @@ void	color_saver(char **save, char *str)
 		*save = ft_strdup(ft_strnstr(str, idk, ft_strlen(str)));
 	}
 	else
-		ft_error("Error: twice the same color for roof or floor? 🤔\n");
+		ft_err(d, "Error: twice the same color for roof or floor? 🤔\n");
 }
 
-void	img_saver(char **save, char *str)
+void	img_saver(t_data *d, char **save, char *str)
 {
 	if (!*save)
 		*save = ft_strdup(ft_strnstr(str, "./", ft_strlen(str)));
 	else
-		ft_error("Error: twice the same image direction? 🤔\n");
+		ft_err(d, "Error: twice the same image direction? 🤔\n");
 	chk_img_path(*save);
 }
 
 void	img_dealer(t_data *d, char *str)
 {
 	if (str[0] == 'N' && str[1] == 'O')
-		img_saver(&d->map.no_img, str);
+		img_saver(d, &d->map.no_img, str);
 	if (str[0] == 'S' && str[1] == 'O')
-		img_saver(&d->map.so_img, str);
+		img_saver(d, &d->map.so_img, str);
 	if (str[0] == 'W' && str[1] == 'E')
-		img_saver(&d->map.we_img, str);
+		img_saver(d, &d->map.we_img, str);
 	if (str[0] == 'E' && str[1] == 'A')
-		img_saver(&d->map.ea_img, str);
+		img_saver(d, &d->map.ea_img, str);
 	if (str[0] == 'F')
-		color_saver(&d->map.f_img, str);
+		color_saver(d, &d->map.f_img, str);
 	if (str[0] == 'C')
-		color_saver(&d->map.c_img, str);
+		color_saver(d, &d->map.c_img, str);
 }
 
 void	create_map(char	*map, t_data *d)
