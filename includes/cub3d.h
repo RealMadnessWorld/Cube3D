@@ -172,6 +172,7 @@ void	be_free(t_data *d);
 int		is_char(char c, char *str);
 int		is_empty(char *str);
 void	ft_err(t_data *d, char *error);
+char	*check_img_path(char *path, t_data *d);
 
 /*
 ** Movement
