@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/03/03 21:53:33 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/09 01:21:14 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@
 # define WIN_W 1200
 # define KEYPRESS 2
 # define KEYRELEASE 3
-# define ESC_KEY 27
+# define ESC_KEY 65307
+# define KEY_ARR_LEFT 65361
+# define KEY_ARR_RIGHT 65363
 # define W_KEY 119
 # define S_KEY 115
 # define D_KEY 100
@@ -48,6 +50,17 @@
 /****************************\
 *		  Structures		 *
 \****************************/
+
+typedef struct s_keys
+{
+	int	key_w;
+	int	key_s;
+	int	key_a;
+	int	key_d;
+	int	key_esc;
+	int	key_right;
+	int	key_left;
+}	t_keys;
 
 typedef struct	s_map
 {
@@ -117,8 +130,9 @@ typedef struct s_rc
 		int		floorTexture;
 } t_rc;
 
-typedef struct s_info
+typedef struct s_data
 {
+	t_keys	keys;
 	double	posX;
 	double	posY;
 	double	dirX;
@@ -150,8 +164,8 @@ void	square_map(t_data *d, int	width);
 /*
 ** Inits
 */
-void	load_image(t_data *info, int *texture, char *path, t_img *img);
-void	load_texture(t_data *info);
+void	load_image(t_data *data, int *texture, char *path, t_img *img);
+void	load_texture(t_data *data);
 t_data	init_data(void);
 
 /*
@@ -177,13 +191,23 @@ char	*check_img_path(char *path, t_data *d);
 /*
 ** Movement
 */
-int		key_press(int key, t_data *info);
+int		key_press(int key, t_data *data);
+int		key_release(int key, t_data *data);
+int		key_hook(t_data *data);
 
 /*
 ** RayCasting
 */
-void calculate(t_data *info);
+void	calculate(t_data *data);
+void	draw_floor(t_rc *rc, t_data *data, int x);
+void	set_wall_directions(t_rc *rc);
+void	set_textures_coords(t_rc *rc, t_data *data, int x);
 
+/*
+** End
+*/
+
+int		finish(t_data *data);
 
 /*
 ** DEBBUGING

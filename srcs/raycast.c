@@ -28,31 +28,31 @@ int mapito[mapWidth][mapHeight] =
 		{2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5}};
 
 
-static void set_distances(t_rc *rc, int x, t_data *info)
+static void set_distances(t_rc *rc, int x, t_data *data)
 {
 	if (rc->rayDirX < 0)
 	{
 		rc->stepX = -1;
-		rc->sideDistX = (info->posX - rc->mapX) * rc->deltaDistX;
+		rc->sideDistX = (data->posX - rc->mapX) * rc->deltaDistX;
 	}
 	else
 	{
 		rc->stepX = 1;
-		rc->sideDistX = (rc->mapX + 1.0 - info->posX) * rc->deltaDistX;
+		rc->sideDistX = (rc->mapX + 1.0 - data->posX) * rc->deltaDistX;
 	}
 	if (rc->rayDirY < 0)
 	{
 		rc->stepY = -1;
-		rc->sideDistY = (info->posY - rc->mapY) * rc->deltaDistY;
+		rc->sideDistY = (data->posY - rc->mapY) * rc->deltaDistY;
 	}
 	else
 	{
 		rc->stepY = 1;
-		rc->sideDistY = (rc->mapY + 1.0 - info->posY) * rc->deltaDistY;
+		rc->sideDistY = (rc->mapY + 1.0 - data->posY) * rc->deltaDistY;
 	}
 }
 
-static void	loop_till_hit(t_rc *rc, t_data *info)
+static void	loop_till_hit(t_rc *rc, t_data *data)
 {
 	while (rc->hit == 0)
 	{
@@ -72,12 +72,12 @@ static void	loop_till_hit(t_rc *rc, t_data *info)
 		rc->hit = 1;
 	}
 	if (rc->side == 0)
-		rc->perpWallDist = (rc->mapX - info->posX + (1 - rc->stepX) / 2) / rc->rayDirX;
+		rc->perpWallDist = (rc->mapX - data->posX + (1 - rc->stepX) / 2) / rc->rayDirX;
 	else
-		rc->perpWallDist = (rc->mapY - info->posY + (1 - rc->stepY) / 2) / rc->rayDirY;
+		rc->perpWallDist = (rc->mapY - data->posY + (1 - rc->stepY) / 2) / rc->rayDirY;
 }
 
-static void calculate_textures(t_rc *rc, t_data *info)
+static void calculate_textures(t_rc *rc, t_data *data)
 {
 	rc->lineHeight = (int)(HEIGHT / rc->perpWallDist);
 	rc->drawStart = -rc->lineHeight / 2 + HEIGHT / 2;
@@ -88,9 +88,9 @@ static void calculate_textures(t_rc *rc, t_data *info)
 		rc->drawEnd = HEIGHT - 1;
 	rc->texNum = mapito[rc->mapX][rc->mapY] - 1;
 	if (rc->side == 0)
-		rc->wallX = info->posY + rc->perpWallDist * rc->rayDirY;
+		rc->wallX = data->posY + rc->perpWallDist * rc->rayDirY;
 	else
-		rc->wallX = info->posX + rc->perpWallDist * rc->rayDirX;
+		rc->wallX = data->posX + rc->perpWallDist * rc->rayDirX;
 	rc->wallX -= floor(rc->wallX);
 	rc->texX = (int)(rc->wallX * (double)texWidth);
 	if (rc->side == 0 && rc->rayDirX > 0)
@@ -101,89 +101,19 @@ static void calculate_textures(t_rc *rc, t_data *info)
 	rc->texPos = (rc->drawStart - HEIGHT / 2 + rc->lineHeight / 2) * rc->step;
 }
 
-static void set_textures_coords(t_rc *rc, t_data *info, int x)
-{
-	int y;
-
-	y = rc->drawStart;
-	while (y < rc->drawEnd)
-	{
-		rc->texY = (int)rc->texPos & (texHeight - 1);
-		rc->texPos += rc->step;
-		rc->color = info->texture[rc->texNum][texHeight * rc->texY + rc->texX];
-		if (rc->side == 1)
-			rc->color = (rc->color >> 1) & 8355711;
-
-		info->buf[y][x] = rc->color;
-		y++;
-	}
-}
-
-void	set_wall_directions(t_rc *rc)
-{
-	if (rc->side == 0 && rc->rayDirX > 0)
-	{
-		rc->floorXWall = rc->mapX;
-		rc->floorYWall = rc->mapY + rc->wallX;
-	}
-	else if (rc->side == 0 && rc->rayDirX < 0)
-	{
-		rc->floorXWall = rc->mapX + 1.0;
-		rc->floorYWall = rc->mapY + rc->wallX;
-	}
-	else if (rc->side == 1 && rc->rayDirY > 0)
-	{
-		rc->floorXWall = rc->mapX + rc->wallX;
-		rc->floorYWall = rc->mapY;
-	}
-	else
-	{
-		rc->floorXWall = rc->mapX + rc->wallX;
-		rc->floorYWall = rc->mapY + 1.0;
-	}
-}
-
-void	draw_floor(t_rc *rc, t_data *info, int x)
-{
-	int	y;
-
-	rc->distWall = rc->perpWallDist;
-	rc->distPlayer = 0.0;
-	if (rc->drawEnd < 0)
-		rc->drawEnd = HEIGHT;
-	y = rc->drawEnd + 1;
-	while (y < HEIGHT)
-	{
-		rc->currentDist = HEIGHT / (2.0 * y - HEIGHT);
-		rc->weight = (rc->currentDist - rc->distPlayer) / (rc->distWall - rc->distPlayer);
-		rc->currentFloorX = rc->weight * rc->floorXWall + (1.0 - rc->weight) * info->posX;
-		rc->currentFloorY = rc->weight * rc->floorYWall + (1.0 - rc->weight) * info->posY;
-		rc->floorTexX = (int)(rc->currentFloorX * texWidth) % texWidth;
-		rc->floorTexY = (int)(rc->currentFloorY * texHeight) % texHeight;
-		rc->checkerBoardPattern = ((int)(rc->currentFloorX) + (int)(rc->currentFloorY)) % 2;
-		if (rc->checkerBoardPattern == 0)
-			rc->floorTexture = 3;
-		else
-			rc->floorTexture = 4;
-		info->buf[y][x] = (info->texture[rc->floorTexture][texWidth * rc->floorTexY + rc->floorTexX] >> 1) & 8355711;
-		info->buf[HEIGHT - y][x] = info->texture[6][texWidth * rc->floorTexY + rc->floorTexX];
-		y++;
-	}
-}
-
-static void init_rc_vars(t_rc *rc, int x, t_data *info)
+static void init_rc_vars(t_rc *rc, int x, t_data *data)
 {
 	rc->cameraX = 2 * x / (double)WIDTH - 1;
-	rc->rayDirX = info->dirX + info->planeX * rc->cameraX;
-	rc->rayDirY = info->dirY + info->planeY * rc->cameraX;
-	rc->mapX = (int)info->posX;
-	rc->mapY = (int)info->posY;
+	rc->rayDirX = data->dirX + data->planeX * rc->cameraX;
+	rc->rayDirY = data->dirY + data->planeY * rc->cameraX;
+	rc->mapX = (int)data->posX;
+	rc->mapY = (int)data->posY;
 	rc->deltaDistX = fabs(1 / rc->rayDirX);
 	rc->deltaDistY = fabs(1 / rc->rayDirY);
 	rc->hit = 0;
 }
 
-void calculate(t_data *info)
+void calculate(t_data *data)
 {
 	int		x;
 	t_rc	rc;
@@ -191,13 +121,13 @@ void calculate(t_data *info)
 	x = 0;
 	while (x < WIDTH)
 	{
-		init_rc_vars(&rc, x, info);
-		set_distances(&rc, x, info);
-		loop_till_hit(&rc,info);
-		calculate_textures(&rc, info);
-		set_textures_coords(&rc, info, x);
+		init_rc_vars(&rc, x, data);
+		set_distances(&rc, x, data);
+		loop_till_hit(&rc,data);
+		calculate_textures(&rc, data);
+		set_textures_coords(&rc, data, x);
 		set_wall_directions(&rc);
-		draw_floor(&rc, info, x);
+		draw_floor(&rc, data, x);
 		x++;
 	}
 }
