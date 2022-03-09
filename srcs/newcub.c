@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 19:53:20 by yohlee            #+#    #+#             */
-/*   Updated: 2022/03/07 23:46:11 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/09 01:25:09 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main_loop(t_data *data)
 {
 	calculate(data);
 	draw(data);
+	key_hook(data);
 	return (0);
 }
 
@@ -38,8 +39,6 @@ int main(int argc, char **argv)
 
 	i = 0;
 	data = init_data();
-	create_map(argv[1], &data);
-	// print_map_shit(&data);
 	while (i < HEIGHT)
 	{
 		ft_bzero(data.buf[i++], WIDTH);
@@ -58,6 +57,7 @@ int main(int argc, char **argv)
 	load_texture(&data);
 	mlx_loop_hook(data.mlx, &main_loop, &data);
 	mlx_hook(data.win, X_EVENT_KEY_PRESS, 1L<<0, &key_press, &data);
+	mlx_hook(data.win, KEYRELEASE, 1L<<1, &key_release, &data);
 	mlx_hook(data.win, 17, 1L << 17, &finish, &data);
 	mlx_loop(data.mlx);
 	return (0);

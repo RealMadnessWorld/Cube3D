@@ -84,6 +84,4 @@ void	create_map(char	*map, t_data *d)
 	square_map(d, d->map.width);
 	map_closed(d, d->map.map);
 	verify(d);
-	d->posX = (double)d->map.play_x;
-	d->posY = (double)d->map.play_y;
 }

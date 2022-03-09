@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/03/07 22:37:03 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/09 01:21:14 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # define KEYPRESS 2
 # define KEYRELEASE 3
 # define ESC_KEY 65307
+# define KEY_ARR_LEFT 65361
+# define KEY_ARR_RIGHT 65363
 # define W_KEY 119
 # define S_KEY 115
 # define D_KEY 100
@@ -48,6 +50,17 @@
 /****************************\
 *		  Structures		 *
 \****************************/
+
+typedef struct s_keys
+{
+	int	key_w;
+	int	key_s;
+	int	key_a;
+	int	key_d;
+	int	key_esc;
+	int	key_right;
+	int	key_left;
+}	t_keys;
 
 typedef struct	s_map
 {
@@ -119,6 +132,7 @@ typedef struct s_rc
 
 typedef struct s_data
 {
+	t_keys	keys;
 	double	posX;
 	double	posY;
 	double	dirX;
@@ -177,6 +191,8 @@ void	ft_err(t_data *d, char *error);
 ** Movement
 */
 int		key_press(int key, t_data *data);
+int		key_release(int key, t_data *data);
+int		key_hook(t_data *data);
 
 /*
 ** RayCasting
