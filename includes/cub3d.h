@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/03/09 01:21:14 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/09 19:18:32 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@
 \****************************/
 
 # define TITLE "principle vagina"
-# define WIN_H 800
-# define WIN_W 1200
 # define KEYPRESS 2
 # define KEYRELEASE 3
 # define ESC_KEY 65307
@@ -44,8 +42,8 @@
 # define texHeight 64
 # define mapWidth 24
 # define mapHeight 24
-# define WIDTH 640
-# define HEIGHT 480
+# define WIDTH 1000
+# define HEIGHT 600
 \
 /****************************\
 *		  Structures		 *

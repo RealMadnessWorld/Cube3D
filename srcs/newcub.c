@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 19:53:20 by yohlee            #+#    #+#             */
-/*   Updated: 2022/03/09 01:25:09 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/09 19:16:28 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 static void draw(t_data *data)
 {
-	for (int y = 0; y < HEIGHT; y++)
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < HEIGHT)
 	{
-		for (int x = 0; x < WIDTH; x++)
-		{
-			data->img.data[y * WIDTH + x] = data->buf[y][x];
-		}
+		x = 0;
+		while (x < WIDTH)
+			data->img.data[y * WIDTH + x] = data->buf[y][x++];
+		y++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
@@ -38,11 +42,11 @@ int main(int argc, char **argv)
 	int		i;
 
 	i = 0;
+	write(1, "A\n", 2);
 	data = init_data();
+	printf("C\n");
 	while (i < HEIGHT)
-	{
 		ft_bzero(data.buf[i++], WIDTH);
-	}
 	data.texture = (int **)malloc(sizeof(int *) * 8);
 	if (!data.texture)
 		return (-1);
