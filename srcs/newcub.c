@@ -12,6 +12,21 @@
 
 #include "../includes/cub3d.h"
 
+void	vars_init(t_data *d)
+{
+	d->map.c_img = NULL;
+	d->map.f_img = NULL;
+	d->map.no_img = NULL;
+	d->map.so_img = NULL;
+	d->map.we_img = NULL;
+	d->map.ea_img = NULL;
+	d->map.width = 0;
+	d->map.height = 0;
+	d->map.play_x = -1;
+	d->map.play_y = -1;
+	d->map.play_starts = 0;
+}
+
 static void draw(t_data *data)
 {
 	for (int y = 0; y < HEIGHT; y++)
@@ -37,7 +52,13 @@ int main(int argc, char **argv)
 	t_data	data;
 	int		i;
 
+	if (argc != 2)
+		ft_error("Error: I need a map. And one map only!\n");
 	i = 0;
+	vars_init(&data);
+	create_map(argv[1], &data);
+	convert_map(&data);
+	print_map_shit(&data);
 	data = init_data();
 	while (i < HEIGHT)
 	{

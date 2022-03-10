@@ -11,6 +11,7 @@ void	print_validation(char *str)
 void	print_map_shit(t_data *d)
 {
 	int i = 0;
+	int x = 0;
 
 	printf(CLR_RED"\n			IMAGES AND COLORS\n\n"CLR_RST);
 
@@ -50,6 +51,22 @@ void	print_map_shit(t_data *d)
 
 	while(d->map.map[i])
 		printf(CLR_GRN"%s\n"CLR_RST, d->map.map[i++]);
+
+	printf("\n\nmap int\n\n");
+
+	i = 0;
+	while(i < d->map.height)
+	{
+		x = 0;
+		printf("{");
+		while(x < d->map.width)
+		{
+			printf("%i", d->mapito[i][x]);
+			x++;
+		}
+		printf("}\n");
+		i++;
+	}
 
 	printf(CLR_RED"\nDONT FORGET THAT THE PROGRAM DOESNT CHECK FOR EXTENSIONS YET!!!!!\n"CLR_RST);
 }

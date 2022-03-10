@@ -147,6 +147,7 @@ typedef struct s_data
 	int		**texture;
 	double	moveSpeed;
 	double	rotSpeed;
+	int		**mapito;
 } t_data;
 
 /****************************\
@@ -176,6 +177,7 @@ void	verify(t_data *d);
 int		ready_to_map(t_data *d);
 int		check_chars(char *str, char *chars);
 void	map_closed(t_data *d, char **map);
+void	convert_map(t_data *d);
 
 /*
 ** Utils
