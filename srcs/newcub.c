@@ -59,14 +59,10 @@ int main(int argc, char **argv)
 	if (argc != 2)
 		ft_error("Error: I need a map. And one map only!\n");
 	i = 0;
-<<<<<<< HEAD
 	vars_init(&data);
 	create_map(argv[1], &data);
 	convert_map(&data);
 	print_map_shit(&data);
-=======
-	write(1, "A\n", 2);
->>>>>>> bf2ef911fa6990285b1304229ff396aab9533158
 	data = init_data();
 	printf("C\n");
 	while (i < HEIGHT)
