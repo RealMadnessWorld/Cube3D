@@ -86,7 +86,10 @@ static void calculate_textures(t_rc *rc, t_data *data)
 	rc->drawEnd = rc->lineHeight / 2 + HEIGHT / 2;
 	if (rc->drawEnd >= HEIGHT)
 		rc->drawEnd = HEIGHT - 1;
+<<<<<<< HEAD
 	rc->texNum = data->mapito[rc->mapX][rc->mapY] - 1;
+=======
+>>>>>>> bf2ef911fa6990285b1304229ff396aab9533158
 	if (rc->side == 0)
 		rc->wallX = data->posY + rc->perpWallDist * rc->rayDirY;
 	else

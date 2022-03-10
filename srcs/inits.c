@@ -57,8 +57,8 @@ t_data init_data(void)
 	data.dirY = 0.0;
 	data.planeX = 0.0;
 	data.planeY = 0.66;
-	data.moveSpeed = 0.02;
-	data.rotSpeed = 0.02;
+	data.moveSpeed = 0.03;
+	data.rotSpeed = 0.03;
 	data.map.width = 0;
 	data.map.height = 0;
 	data.map.play_x = -1;

@@ -47,11 +47,11 @@ static void move(int direction, t_data *data)
 
 static void rotate(int direction, t_data *data)
 {
-	double oldDirX;
-	double oldPlaneX;
+	double	oldDirX;
+	double	oldPlaneX;
+
 	oldDirX = data->dirX;
 	oldPlaneX = data->planeX;
-
 	if (direction == 1)
 	{
 		data->dirX = data->dirX * cos(-data->rotSpeed) - data->dirY * sin(-data->rotSpeed);
