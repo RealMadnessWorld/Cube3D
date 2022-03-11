@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/03/09 19:18:32 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/10 22:59:05 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@
 # define mapHeight 24
 # define WIDTH 1000
 # define HEIGHT 600
+# define S_DIR 3.1415907
+# define E_DIR 1.57079
+# define W_DIR -1.57079
 \
 /****************************\
 *		  Structures		 *
@@ -107,7 +110,6 @@ typedef struct s_rc
 		int		lineHeight;
 		int		drawStart;
 		int		drawEnd;
-		int		texNum;
 		double	wallX;
 		int		texX;
 		double	step;
@@ -165,7 +167,7 @@ void	square_map(t_data *d, int	width);
 */
 void	load_image(t_data *data, int *texture, char *path, t_img *img);
 void	load_texture(t_data *data);
-t_data	init_data(void);
+void	init_data(t_data *data);
 
 /*
 ** Verifications
@@ -194,6 +196,7 @@ char	*check_img_path(char *path, t_data *d);
 int		key_press(int key, t_data *data);
 int		key_release(int key, t_data *data);
 int		key_hook(t_data *data);
+void 	rotate(int direction, t_data *data, double rotSpeed);
 
 /*
 ** RayCasting

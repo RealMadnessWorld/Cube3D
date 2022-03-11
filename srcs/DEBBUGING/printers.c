@@ -19,7 +19,7 @@ void	print_map_shit(t_data *d)
 	printf(CLR_CYN"\"%s\"  " , d->map.no_img);
 	printf(CLR_YLW"right extention: "CLR_RST);
 	print_validation(d->map.no_img);
-	
+
 	printf(CLR_YLW"SO -> ");
 	printf(CLR_CYN"\"%s\"  ", d->map.so_img);
 	printf(CLR_YLW"right extention: "CLR_RST);
@@ -37,7 +37,7 @@ void	print_map_shit(t_data *d)
 
 	printf(CLR_YLW"F ->  ");
 	printf(CLR_CYN"\"%s\"\n"CLR_RST, d->map.f_img);
-	
+
 	printf(CLR_YLW"C ->  ");
 	printf(CLR_CYN"\"%s\"\n"CLR_RST, d->map.c_img);
 
