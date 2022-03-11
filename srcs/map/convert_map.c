@@ -16,30 +16,30 @@ void	set_player(t_data *d, int y, int x, char c)
 void	convert_map(t_data *d)
 {
 	int	**newmap;
-	int	y;
 	int	x;
+	int	y;
 
 	newmap = (int **)malloc(sizeof(int *) * d->map.height);
-	y = 0;
-	while (d->map.map[y])
+	x = 0;
+	while (d->map.map[x])
 	{
-		newmap[y] = (int *)malloc(sizeof(int) * d->map.width);
-		x = 0;
-		while (d->map.map[y][x])
+		newmap[x] = (int *)malloc(sizeof(int) * d->map.width);
+		y = 0;
+		while (d->map.map[x][y])
 		{
-			if (is_char(d->map.map[y][x], " "))
-				newmap[y][x] = 9;
-			else if (is_char(d->map.map[y][x], "NSWE"))
+			if (is_char(d->map.map[x][y], " "))
+				newmap[x][y] = 9;
+			else if (is_char(d->map.map[x][y], "NSWE"))
 			{
-				set_player(d, y, x, d->map.map[y][x]);
-				newmap[y][x] = 0;
+				set_player(d, y, x, d->map.map[x][y]);
+				newmap[x][y] = 0;
 			}
 			else
-				newmap[y][x] = d->map.map[y][x] - '0';
-			x++;
+				newmap[x][y] = d->map.map[x][y] - '0';
+			y++;
 		}
-		y++;
+		x++;
 	}
-	newmap[y] = NULL;
+	newmap[x] = NULL;
 	d->mapito = newmap;
 }

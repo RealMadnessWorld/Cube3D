@@ -54,10 +54,11 @@ static void	calc_distance(t_rc *rc, t_data *data)
 			rc->mapY += rc->stepY;
 			rc->side = 1;
 		}
-	printf("AAA\n");
-	printf("%d\n", rc->mapX);
+	// printf("mapX = %d\tmapY = %d\n", rc->mapX, rc->mapY);
 		if (data->mapito[rc->mapX][rc->mapY] > 0)
 			rc->hit = 1;
+	// printf("BBB\n");
+
 	}
 	if (rc->side == 0)
 		rc->perpWallDist = (rc->mapX - data->posX + (1 - rc->stepX) / 2) / rc->rayDirX;
@@ -106,16 +107,15 @@ void calculate(t_data *data)
 	t_rc	rc;
 
 	x = 0;
-	printf("AAA\n");
-	for(int i = 0; i < 7; i++)
-	{
-		for (int j = 0; j < 7; j++)
-		{
-			printf("%d", data->mapito[i][j]);
-		}
-		printf("\n");
-	}
-	printf("AAA\n");
+	// for(int i = 0; i < 6; i++)
+	// {
+	// 	for (int j = 0; j < 6; j++)
+	// 	{
+	// 		printf("%d", data->mapito[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+	// printf("posX = %f\tposY = %f\n", data->posX, data->posY);
 	while (x < WIDTH)
 	{
 		init_rc_vars(&rc, x, data);
