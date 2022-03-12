@@ -1,7 +1,7 @@
-NO ./textures/eagle.xpm
-SO ./textures/bluestone.xpm
-WE ./textures/purplestone.xpm
-EA ./textures/colorstone.xpm
+NO ./textures/purplestone.xpm
+SO ./textures/wood.xpm
+WE ./textures/bluestone.xpm
+EA ./textures/redbrick.xpm
 
 F 128,0,32
 C 135,206,235

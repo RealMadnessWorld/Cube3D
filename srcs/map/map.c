@@ -56,7 +56,7 @@ void	map_dealer(t_data *d, char *str)
 {
 	if (is_empty(str))
 		return ;
-	if (!check_chars(str, " 10NEWS"))
+	if (!check_chars(str, "	 10NEWS"))
 		ft_err(d, "Error: Weird symbol in the map...\n");
 	if ((int)ft_strlen(str) > d->map.width)
 		d->map.width = (int)ft_strlen(str);

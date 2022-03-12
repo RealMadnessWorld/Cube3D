@@ -65,18 +65,20 @@ void	img_dealer(t_data *d, char *str)
 {
 	t_img	img;
 
-	if (str[0] == 'N' && str[1] == 'O')
-		load_image(d, d->map.no_img, (str + 3), &img);
-	if (str[0] == 'S' && str[1] == 'O')
-		load_image(d, d->map.so_img, (str + 3), &img);
-	if (str[0] == 'W' && str[1] == 'E')
-		load_image(d, d->map.we_img, (str + 3), &img);
-	if (str[0] == 'E' && str[1] == 'A')
-		load_image(d, d->map.ea_img, (str + 3), &img);
-	if (str[0] == 'F')
+	if (str[0] == 'N')
+		load_image(d, d->map.no_img, (str), &img);
+	else if (str[0] == 'S')
+		load_image(d, d->map.so_img, (str), &img);
+	else if (str[0] == 'W')
+		load_image(d, d->map.we_img, (str), &img);
+	else if (str[0] == 'E')
+		load_image(d, d->map.ea_img, (str), &img);
+	else if (str[0] == 'F')
 		color_saver(d, &d->map.f_color, str);
-	if (str[0] == 'C')
+	else if (str[0] == 'C')
 		color_saver(d, &d->map.c_color, str);
+	else
+		ft_err(d, "Error: Please use a valid identifier (NO,SO,WE,EA,C,F)");
 }
 
 void	create_map(char	*map, t_data *d)

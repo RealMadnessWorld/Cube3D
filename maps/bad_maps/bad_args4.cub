@@ -1,0 +1,7 @@
+NO ./textures/purplestone.xpm
+WE ./textures/wood.xpm
+SU ./textures/bluestone.xpm
+EA ./textures/redbrick.xpm
+
+FF 0,0,0
+CC 0,0,0

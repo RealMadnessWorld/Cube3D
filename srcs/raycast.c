@@ -14,31 +14,31 @@
 // 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 
 
-static void set_distances(t_rc *rc, int x, t_data *data)
+static void set_distances(t_rc *rc, int x, t_data *d)
 {
 	if (rc->rayDirX < 0)
 	{
 		rc->stepX = -1;
-		rc->sideDistX = (data->posX - rc->mapX) * rc->deltaDistX;
+		rc->sideDistX = (d->posX - rc->mapX) * rc->deltaDistX;
 	}
 	else
 	{
 		rc->stepX = 1;
-		rc->sideDistX = (rc->mapX + 1.0 - data->posX) * rc->deltaDistX;
+		rc->sideDistX = (rc->mapX + 1.0 - d->posX) * rc->deltaDistX;
 	}
 	if (rc->rayDirY < 0)
 	{
 		rc->stepY = -1;
-		rc->sideDistY = (data->posY - rc->mapY) * rc->deltaDistY;
+		rc->sideDistY = (d->posY - rc->mapY) * rc->deltaDistY;
 	}
 	else
 	{
 		rc->stepY = 1;
-		rc->sideDistY = (rc->mapY + 1.0 - data->posY) * rc->deltaDistY;
+		rc->sideDistY = (rc->mapY + 1.0 - d->posY) * rc->deltaDistY;
 	}
 }
 
-static void	calc_distance(t_rc *rc, t_data *data)
+static void	calc_distance(t_rc *rc, t_data *d)
 {
 	while (rc->hit == 0)
 	{
@@ -55,18 +55,18 @@ static void	calc_distance(t_rc *rc, t_data *data)
 			rc->side = 1;
 		}
 	// printf("mapX = %d\tmapY = %d\n", rc->mapX, rc->mapY);
-		if (data->mapito[rc->mapX][rc->mapY] > 0)
+		if (d->mapito[rc->mapX][rc->mapY] > 0)
 			rc->hit = 1;
 	// printf("BBB\n");
 
 	}
 	if (rc->side == 0)
-		rc->perpWallDist = (rc->mapX - data->posX + (1 - rc->stepX) / 2) / rc->rayDirX;
+		rc->perpWallDist = (rc->mapX - d->posX + (1 - rc->stepX) / 2) / rc->rayDirX;
 	else
-		rc->perpWallDist = (rc->mapY - data->posY + (1 - rc->stepY) / 2) / rc->rayDirY;
+		rc->perpWallDist = (rc->mapY - d->posY + (1 - rc->stepY) / 2) / rc->rayDirY;
 }
 
-static void calc_height(t_rc *rc, t_data *data)
+static void calc_height(t_rc *rc, t_data *d)
 {
 	rc->lineHeight = (int)(HEIGHT / rc->perpWallDist);
 	rc->drawStart = -rc->lineHeight / 2 + HEIGHT / 2;
@@ -76,9 +76,9 @@ static void calc_height(t_rc *rc, t_data *data)
 	if (rc->drawEnd >= HEIGHT)
 		rc->drawEnd = HEIGHT - 1;
 	if (rc->side == 0)
-		rc->wallX = data->posY + rc->perpWallDist * rc->rayDirY;
+		rc->wallX = d->posY + rc->perpWallDist * rc->rayDirY;
 	else
-		rc->wallX = data->posX + rc->perpWallDist * rc->rayDirX;
+		rc->wallX = d->posX + rc->perpWallDist * rc->rayDirX;
 	rc->wallX -= floor(rc->wallX);
 	rc->texX = (int)(rc->wallX * (double)texWidth);
 	if (rc->side == 0 && rc->rayDirX > 0)
@@ -89,19 +89,19 @@ static void calc_height(t_rc *rc, t_data *data)
 	rc->texPos = (rc->drawStart - HEIGHT / 2 + rc->lineHeight / 2) * rc->step;
 }
 
-static void init_rc_vars(t_rc *rc, int x, t_data *data)
+static void init_rc_vars(t_rc *rc, int x, t_data *d)
 {
 	rc->cameraX = 2 * x / (double)WIDTH - 1;
-	rc->rayDirX = data->dirX + data->planeX * rc->cameraX;
-	rc->rayDirY = data->dirY + data->planeY * rc->cameraX;
-	rc->mapX = (int)data->posX;
-	rc->mapY = (int)data->posY;
+	rc->rayDirX = d->dirX + d->planeX * rc->cameraX;
+	rc->rayDirY = d->dirY + d->planeY * rc->cameraX;
+	rc->mapX = (int)d->posX;
+	rc->mapY = (int)d->posY;
 	rc->deltaDistX = fabs(1 / rc->rayDirX);
 	rc->deltaDistY = fabs(1 / rc->rayDirY);
 	rc->hit = 0;
 }
 
-void calculate(t_data *data)
+void calculate(t_data *d)
 {
 	int		x;
 	t_rc	rc;
@@ -109,13 +109,13 @@ void calculate(t_data *data)
 	x = 0;
 	while (x < WIDTH)
 	{
-		init_rc_vars(&rc, x, data);
-		set_distances(&rc, x, data);
-		calc_distance(&rc,data);
-		calc_height(&rc, data);
-		draw_walls(&rc, data, x);
+		init_rc_vars(&rc, x, d);
+		set_distances(&rc, x, d);
+		calc_distance(&rc,d);
+		calc_height(&rc, d);
+		draw_walls(&rc, d, x);
 		set_floor(&rc);
-		draw_floor(&rc, data, x);
+		draw_floor(&rc, d, x);
 		x++;
 	}
 }

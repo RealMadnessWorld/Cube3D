@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/03/12 03:05:49 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/12 18:52:39 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ int		ready_to_map(t_data *d);
 int		check_chars(char *str, char *chars);
 void	map_closed(t_data *d, char **map);
 void	convert_map(t_data *d);
+void	check_texture_identifier(t_data *data, char *path);
 
 /*
 ** Utils

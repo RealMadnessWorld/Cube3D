@@ -16,6 +16,15 @@ int	zero_surr(char **map, int x, int y)
 	return (1);
 }
 
+void check_texture_identifier(t_data *d, char *path)
+{
+	if (ft_strncmp(path, "NO", 2) != 0 && ft_strncmp(path, "SO", 2) != 0
+		&& ft_strncmp(path, "WE", 2) != 0 && ft_strncmp(path, "EA", 2) != 0)
+		ft_err(d, "Error: Bad texture identifier. Use 'NO' 'SO' 'WE' 'EA'");
+	if (*(path + 2) != ' ')
+		ft_err(d, "Error: texture identifier must be followed by a space");
+}
+
 void	map_closed(t_data *d, char **map)
 {
 	int	y;

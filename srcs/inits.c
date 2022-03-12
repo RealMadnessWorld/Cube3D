@@ -1,33 +1,37 @@
 #include "../includes/cub3d.h"
 
-void load_textures(t_data *data)
+void load_textures(t_data *d)
 {
-	data->map.no_img = (int *)malloc(sizeof(int) * (texHeight * texWidth));
-	if (!(data->map.no_img))
+	d->map.no_img = (int *)malloc(sizeof(int) * (texHeight * texWidth));
+	if (!(d->map.no_img))
 		exit(-1);
-	ft_bzero(data->map.no_img, texHeight * texWidth);
-	data->map.so_img = (int *)malloc(sizeof(int) * (texHeight * texWidth));
-	if (!(data->map.so_img))
+	ft_bzero(d->map.no_img, texHeight * texWidth);
+	d->map.so_img = (int *)malloc(sizeof(int) * (texHeight * texWidth));
+	if (!(d->map.so_img))
 		exit(-1);
-	ft_bzero(data->map.so_img, texHeight * texWidth);
-	data->map.we_img = (int *)malloc(sizeof(int) * (texHeight * texWidth));
-	if (!(data->map.we_img))
+	ft_bzero(d->map.so_img, texHeight * texWidth);
+	d->map.we_img = (int *)malloc(sizeof(int) * (texHeight * texWidth));
+	if (!(d->map.we_img))
 		exit(-1);
-	ft_bzero(data->map.we_img, texHeight * texWidth);
-	data->map.ea_img = (int *)malloc(sizeof(int) * (texHeight * texWidth));
-	if (!(data->map.ea_img))
+	ft_bzero(d->map.we_img, texHeight * texWidth);
+	d->map.ea_img = (int *)malloc(sizeof(int) * (texHeight * texWidth));
+	if (!(d->map.ea_img))
 		exit(-1);
-	ft_bzero(data->map.ea_img, texHeight * texWidth);
+	ft_bzero(d->map.ea_img, texHeight * texWidth);
 }
 
-void load_image(t_data *data, int *texture, char *path, t_img *img)
+void load_image(t_data *d, int *texture, char *path, t_img *img)
 {
-	int y;
-	int	x;
+	int		y;
+	int		x;
+	char	*truePath;
 
 	y = 0;
-	chk_img_path(path);
-	img->img = mlx_xpm_file_to_image(data->mlx, path, &img->img_width, &img->img_height);
+	check_texture_identifier(d, path);
+	truePath = path + 3;
+	printf("truePath = %s\n", truePath);
+	chk_img_path(truePath);
+	img->img = mlx_xpm_file_to_image(d->mlx, truePath, &img->img_width, &img->img_height);
 	img->data = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->size_l, &img->endian);
 	while (y < img->img_height)
 	{
@@ -39,7 +43,7 @@ void load_image(t_data *data, int *texture, char *path, t_img *img)
 		}
 		y++;
 	}
-	mlx_destroy_image(data->mlx, img->img);
+	mlx_destroy_image(d->mlx, img->img);
 }
 
 void	init_keys(t_keys *keys)
@@ -53,29 +57,29 @@ void	init_keys(t_keys *keys)
 	keys->key_left = 0;
 }
 
-void	init_data(t_data *data)
+void	init_data(t_data *d)
 {
-	data->dirX = -1.0;
-	data->dirY = 0.0;
-	data->planeX = 0.0;
-	data->planeY = 0.66;
-	data->moveSpeed = 0.03;
-	data->rotSpeed = 0.03;
-	data->map.c_color = NULL;
-	data->map.f_color = NULL;
-	data->map.no_img = NULL;
-	data->map.so_img = NULL;
-	data->map.we_img = NULL;
-	data->map.ea_img = NULL;
-	data->map.width = 0;
-	data->map.height = 0;
-	data->map.play_x = -1;
-	data->map.play_y = -1;
-	data->map.play_starts = 0;
-	init_keys(&data->keys);
-	load_textures(data);
-	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "mlx");
-	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	data->img.data = (int *)mlx_get_data_addr(data->img.img, &data->img.bpp, &data->img.size_l, &data->img.endian);
+	d->dirX = -1.0;
+	d->dirY = 0.0;
+	d->planeX = 0.0;
+	d->planeY = 0.66;
+	d->moveSpeed = 0.03;
+	d->rotSpeed = 0.03;
+	d->map.c_color = NULL;
+	d->map.f_color = NULL;
+	d->map.no_img = NULL;
+	d->map.so_img = NULL;
+	d->map.we_img = NULL;
+	d->map.ea_img = NULL;
+	d->map.width = 0;
+	d->map.height = 0;
+	d->map.play_x = -1;
+	d->map.play_y = -1;
+	d->map.play_starts = 0;
+	init_keys(&d->keys);
+	load_textures(d);
+	d->mlx = mlx_init();
+	d->win = mlx_new_window(d->mlx, WIDTH, HEIGHT, "mlx");
+	d->img.img = mlx_new_image(d->mlx, WIDTH, HEIGHT);
+	d->img.data = (int *)mlx_get_data_addr(d->img.img, &d->img.bpp, &d->img.size_l, &d->img.endian);
 }

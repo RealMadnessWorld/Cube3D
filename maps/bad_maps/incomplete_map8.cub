@@ -1,0 +1,5 @@
+NO ./textures/purplestone.xpm
+WE ./textures/wood.xpm
+EA ./textures/redbrick.xpm
+
+F 1,0,255
