@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 19:53:20 by yohlee            #+#    #+#             */
-/*   Updated: 2022/03/11 00:03:55 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/12 03:14:05 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,11 @@ int main(int argc, char **argv)
 	if (argc != 2)
 		ft_error("Error: I need a map. And one map only!\n");
 	init_data(&data);
+	load_textures(&data);
 	create_map(argv[1], &data);
 	convert_map(&data);
-	// print_map_shit(&data);
 	while (i < HEIGHT)
 		ft_bzero(data.buf[i++], WIDTH);
-	load_texture(&data);
 	mlx_loop_hook(data.mlx, &main_loop, &data);
 	mlx_hook(data.win, X_EVENT_KEY_PRESS, 1L<<0, &key_press, &data);
 	mlx_hook(data.win, KEYRELEASE, 1L<<1, &key_release, &data);

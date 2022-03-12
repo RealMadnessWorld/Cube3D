@@ -14,8 +14,8 @@
 
 // void	vars_init(t_data *d)
 // {
-// 	d->map.c_img = NULL;
-// 	d->map.f_img = NULL;
+// 	d->map.c_color = NULL;
+// 	d->map.f_color = NULL;
 // 	d->map.no_img = NULL;
 // 	d->map.so_img = NULL;
 // 	d->map.we_img = NULL;

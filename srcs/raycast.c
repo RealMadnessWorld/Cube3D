@@ -107,23 +107,14 @@ void calculate(t_data *data)
 	t_rc	rc;
 
 	x = 0;
-	// for(int i = 0; i < 6; i++)
-	// {
-	// 	for (int j = 0; j < 6; j++)
-	// 	{
-	// 		printf("%d", data->mapito[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
-	// printf("posX = %f\tposY = %f\n", data->posX, data->posY);
 	while (x < WIDTH)
 	{
 		init_rc_vars(&rc, x, data);
 		set_distances(&rc, x, data);
 		calc_distance(&rc,data);
 		calc_height(&rc, data);
-		set_textures_coords(&rc, data, x);
-		set_wall_directions(&rc);
+		draw_walls(&rc, data, x);
+		set_floor(&rc);
 		draw_floor(&rc, data, x);
 		x++;
 	}

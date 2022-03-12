@@ -18,7 +18,29 @@ int	is_image(char *str)
 		return (0);
 }
 
-void	color_saver(t_data *d, char **save, char *str)
+static int	*save_color(t_data *d, char *str)
+{
+	char	**split;
+	int		*colors;
+	int		i;
+
+	i = 0;
+	split = ft_split(str, ',');
+	if (split[3])
+		ft_err(d, "Error: Colors have 3 elements (R, G, B)");
+	colors = (int *)malloc(sizeof(int) * 3);
+	while (i < 3)
+	{
+		colors[i] = ft_atoi(split[i]);
+		if (colors[i] < 0 || colors[i] > 255)
+			ft_err(d, "Error: Color range must be between 0 and 255");
+		free(split[i]);
+		i++;
+	}
+	return (colors);
+}
+
+static void	color_saver(t_data *d, int **save, char *str)
 {
 	int		i;
 	char	*idk;
@@ -27,41 +49,34 @@ void	color_saver(t_data *d, char **save, char *str)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]) && str[i] != ',')
-			ft_err(d, "Error: Colors are made of numbers... weird I know!\n");
+			ft_err(d, "Error: Colors are made of numbers... weird I know!");
 		i++;
 	}
 	if (!*save)
 	{
 		idk = ft_strchr(str, str[2]);
-		*save = ft_strdup(ft_strnstr(str, idk, ft_strlen(str)));
+		*save = save_color(d, idk);
 	}
 	else
-		ft_err(d, "Error: twice the same color for roof or floor? 🤔\n");
-}
-
-void	img_saver(t_data *d, char **save, char *str)
-{
-	if (!*save)
-		*save = ft_strdup(ft_strnstr(str, "./", ft_strlen(str)));
-	else
-		ft_err(d, "Error: twice the same image direction? 🤔\n");
-	chk_img_path(*save);
+		ft_err(d, "Error: twice the same color for roof or floor? 🤔");
 }
 
 void	img_dealer(t_data *d, char *str)
 {
+	t_img	img;
+
 	if (str[0] == 'N' && str[1] == 'O')
-		img_saver(d, &d->map.no_img, str);
+		load_image(d, d->map.no_img, (str + 3), &img);
 	if (str[0] == 'S' && str[1] == 'O')
-		img_saver(d, &d->map.so_img, str);
+		load_image(d, d->map.so_img, (str + 3), &img);
 	if (str[0] == 'W' && str[1] == 'E')
-		img_saver(d, &d->map.we_img, str);
+		load_image(d, d->map.we_img, (str + 3), &img);
 	if (str[0] == 'E' && str[1] == 'A')
-		img_saver(d, &d->map.ea_img, str);
+		load_image(d, d->map.ea_img, (str + 3), &img);
 	if (str[0] == 'F')
-		color_saver(d, &d->map.f_img, str);
+		color_saver(d, &d->map.f_color, str);
 	if (str[0] == 'C')
-		color_saver(d, &d->map.c_img, str);
+		color_saver(d, &d->map.c_color, str);
 }
 
 void	create_map(char	*map, t_data *d)
@@ -80,7 +95,6 @@ void	create_map(char	*map, t_data *d)
 		else if (ready_to_map(d))
 			map_dealer(d, line);
 	}
-	d->map.map[d->map.height] = NULL;
 	square_map(d, d->map.width);
 	map_closed(d, d->map.map);
 	verify(d);
