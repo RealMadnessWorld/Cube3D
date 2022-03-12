@@ -18,16 +18,7 @@ void load_textures(t_data *data)
 	if (!(data->map.ea_img))
 		exit(-1);
 	ft_bzero(data->map.ea_img, texHeight * texWidth);
-	// load_image(data, data->texture[0], "textures/eagle.xpm", &img);
-	// load_image(data, data->texture[1], "textures/redbrick.xpm", &img);
-	// load_image(data, data->texture[2], "textures/purplestone.xpm", &img);
-	// load_image(data, data->texture[3], "textures/greystone.xpm", &img);
-	// load_image(data, data->texture[4], "textures/bluestone.xpm", &img);
-	// load_image(data, data->texture[5], "textures/mossy.xpm", &img);
-	// load_image(data, data->texture[6], "textures/wood.xpm", &img);
-	// load_image(data, data->texture[7], "textures/colorstone.xpm", &img);
 }
-
 
 void load_image(t_data *data, int *texture, char *path, t_img *img)
 {
