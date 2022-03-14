@@ -1,21 +1,34 @@
 #include "../../includes/cub3d.h"
 
-int	is_image(char *str)
+int	is_image(t_data *d, char *str)
 {
-	if (str[0] == 'N' && str[1] == 'O')
+	if (str[0] == 'N' && check_texture_identifier(d, str))
 		return (1);
-	else if (str[0] == 'S' && str[1] == 'O')
+	else if (str[0] == 'S' && check_texture_identifier(d, str))
 		return (1);
-	else if (str[0] == 'W' && str[1] == 'E')
+	else if (str[0] == 'W' && check_texture_identifier(d, str))
 		return (1);
-	else if (str[0] == 'E' && str[1] == 'A')
+	else if (str[0] == 'E' && check_texture_identifier(d, str))
 		return (1);
 	else if (str[0] == 'C')
+	{
+		if (*(str + 1) != ' ' && *(str + 1) != '	')
+			ft_err(d, "Error: Bad configuration of C color parameter");
 		return (1);
+	}
 	else if (str[0] == 'F')
+	{
+		if (*(str + 1) != ' ' && *(str + 1) != '	')
+			ft_err(d, "Error: Bad configuration of F color parameter");
 		return (1);
-	else
-		return (0);
+	}
+	// else if (str[0] != '1' && str[0] != '0' && str[0] != ' '
+	// 			&& str[0] != 9 && str[0] != 10)
+	// 			{
+	// 			printf ("this .%s.\n", str);
+	// 			ft_err(d, "Error: Unknown symbol found in the file");
+	// 			}
+	return (0);
 }
 
 static int	*save_color(t_data *d, char *str)
@@ -48,7 +61,8 @@ static void	color_saver(t_data *d, int **save, char *str)
 	i = 2;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) && str[i] != ',')
+		if (!ft_isdigit(str[i]) && str[i] != ',' && str[i] != ' '
+			&& str[i] != '	')
 			ft_err(d, "Error: Colors are made of numbers... weird I know!");
 		i++;
 	}
@@ -66,13 +80,13 @@ void	img_dealer(t_data *d, char *str)
 	t_img	img;
 
 	if (str[0] == 'N')
-		load_image(d, d->map.no_img, (str), &img);
+		load_image(d, d->map.no_img, str, &img);
 	else if (str[0] == 'S')
-		load_image(d, d->map.so_img, (str), &img);
+		load_image(d, d->map.so_img, str, &img);
 	else if (str[0] == 'W')
-		load_image(d, d->map.we_img, (str), &img);
+		load_image(d, d->map.we_img, str, &img);
 	else if (str[0] == 'E')
-		load_image(d, d->map.ea_img, (str), &img);
+		load_image(d, d->map.ea_img, str, &img);
 	else if (str[0] == 'F')
 		color_saver(d, &d->map.f_color, str);
 	else if (str[0] == 'C')
@@ -92,7 +106,7 @@ void	create_map(char	*map, t_data *d)
 	while(ret == 1)
 	{
 		ret = get_next_line(fd, &line);
-		if (is_image(line))
+		if (is_image(d, line))
 			img_dealer(d, line);
 		else if (ready_to_map(d))
 			map_dealer(d, line);

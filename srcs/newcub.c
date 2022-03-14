@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 19:53:20 by yohlee            #+#    #+#             */
-/*   Updated: 2022/03/12 19:53:18 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/14 18:18:25 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int main(int argc, char **argv)
 	if (argc != 2)
 		ft_error("Error: I need a map. And one map only!\n");
 	init_data(&d);
-	load_textures(&d);
 	create_map(argv[1], &d);
 	convert_map(&d);
 	while (i < HEIGHT)

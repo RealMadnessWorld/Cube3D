@@ -1,6 +1,6 @@
 #include "../includes/cub3d.h"
 
-void load_textures(t_data *d)
+void init_textures(t_data *d)
 {
 	d->map.no_img = (int *)malloc(sizeof(int) * (texHeight * texWidth));
 	if (!(d->map.no_img))
@@ -20,6 +20,21 @@ void load_textures(t_data *d)
 	ft_bzero(d->map.ea_img, texHeight * texWidth);
 }
 
+char	*get_path(t_data *d, char *path)
+{
+	int		i;
+
+	i = 0;
+	while (path[i])
+	{
+		if (path[i] == '.')
+			return (&(path[i]));
+		i++;
+	}
+	ft_err(d, "Error: Missing path to texture");
+	return (NULL);
+}
+
 void load_image(t_data *d, int *texture, char *path, t_img *img)
 {
 	int		y;
@@ -27,8 +42,7 @@ void load_image(t_data *d, int *texture, char *path, t_img *img)
 	char	*truePath;
 
 	y = 0;
-	check_texture_identifier(d, path);
-	truePath = path + 3;
+	truePath = get_path(d, path);
 	printf("truePath = %s\n", truePath);
 	chk_img_path(truePath);
 	img->img = mlx_xpm_file_to_image(d->mlx, truePath, &img->img_width, &img->img_height);
@@ -77,7 +91,7 @@ void	init_data(t_data *d)
 	d->map.play_y = -1;
 	d->map.play_starts = 0;
 	init_keys(&d->keys);
-	load_textures(d);
+	init_textures(d);
 	d->mlx = mlx_init();
 	d->win = mlx_new_window(d->mlx, WIDTH, HEIGHT, "mlx");
 	d->img.img = mlx_new_image(d->mlx, WIDTH, HEIGHT);
