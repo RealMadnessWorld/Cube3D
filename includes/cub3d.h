@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/03/14 18:19:03 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/16 18:14:58 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,6 @@ typedef struct s_data
 	t_map	map;
 	t_img	img;
 	int		buf[HEIGHT][WIDTH];
-	int		**texture;
 	double	moveSpeed;
 	double	rotSpeed;
 	int		**mapito;

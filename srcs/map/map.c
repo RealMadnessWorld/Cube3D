@@ -50,6 +50,7 @@ void	square_map(t_data *d, int width)
 		d->map.map[i][++j] = '\0';
 		i++;
 	}
+	d->map.map[i] = NULL;
 }
 
 void	map_dealer(t_data *d, char *str)

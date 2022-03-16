@@ -22,12 +22,9 @@ int	is_image(t_data *d, char *str)
 			ft_err(d, "Error: Bad configuration of F color parameter");
 		return (1);
 	}
-	// else if (str[0] != '1' && str[0] != '0' && str[0] != ' '
-	// 			&& str[0] != 9 && str[0] != 10)
-	// 			{
-	// 			printf ("this .%s.\n", str);
-	// 			ft_err(d, "Error: Unknown symbol found in the file");
-	// 			}
+	else if (str[0] != '1' && str[0] != '0' && str[0] != 32
+				&& str[0] != 9 && str[0] != 10 && str[0] != 0)
+		ft_err(d, "Error: Unknown symbol found in the file");
 	return (0);
 }
 

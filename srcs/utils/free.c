@@ -24,7 +24,7 @@ void	free_map(t_data *d)
 		if (d->map.we_img)
 			free(d->map.we_img);
 		if (d->map.ea_img)
-				free(d->map.ea_img);
+			free(d->map.ea_img);
 	}
 }
 

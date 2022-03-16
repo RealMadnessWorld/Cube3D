@@ -1,7 +1,7 @@
-NO ./textures/purplestone.xpm
-SO ./textures/wood.xpm
-WE ./textures/bluestone.xpm
-EA ./textures/redbrick.xpm
+NO ./textures/skull.xpm
+SO ./textures/smile.xpm
+WE ./textures/siluet.xpm
+EA ./textures/hand_skull.xpm
 
 F 128,0,32
 C 135,206,235
