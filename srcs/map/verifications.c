@@ -45,19 +45,25 @@ void	map_closed(t_data *d, char **map)
 		{
 			if (is_char(map[y][x], "0EWSN") && !zero_surr(map, x, y))
 				ft_err(d, "Map not closed. You can't trick me! I am machine!!\n");
-			if (is_char(map[y][x], "EWSN"))
-			{
-				if (d->map.play_x == -1 && d->map.play_y == -1)
-				{
-					d->map.play_x = x;
-					d->map.play_y = y;
-				}
-				else
-					ft_err(d, "this is a single player game. That means ONE starting position\n");
-			}
 			x++;
 		}
-		printf("aqui\n");
 		y++;
 	}
+}
+
+
+void	verify(t_data *d)
+{
+	printf ("no %d\n", *d->map.no_img);
+	printf ("so %d\n", *d->map.so_img);
+	printf ("we %d\n", *d->map.we_img);
+	printf ("ea %d\n", *d->map.ea_img);
+
+	if (!(*(d->map.ea_img)) || !(*(d->map.so_img)) || !(*(d->map.we_img))
+			|| !(*(d->map.no_img)))
+		ft_err(d, "Error: Missing texture(s)\n");
+	else if (!d->map.c_color || !d->map.f_color)
+		ft_err(d, "Error: Missing color(s)\n");
+	else if (!d->map.map)
+		ft_err(d, "Error: Where's the map?\n");
 }

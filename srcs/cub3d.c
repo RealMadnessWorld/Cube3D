@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 19:53:20 by yohlee            #+#    #+#             */
-/*   Updated: 2022/03/16 18:30:44 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/16 19:54:41 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,12 @@ int main(int argc, char **argv)
 		ft_error("Error: I need a map. And one map only!\n");
 	init_data(&d);
 	create_map(argv[1], &d);
-	convert_map(&d);
 	while (i < HEIGHT)
 		ft_bzero(d.buf[i++], WIDTH);
 	mlx_loop_hook(d.mlx, &main_loop, &d);
 	mlx_hook(d.win, X_EVENT_KEY_PRESS, 1L<<0, &key_press, &d);
 	mlx_hook(d.win, KEYRELEASE, 1L<<1, &key_release, &d);
 	mlx_hook(d.win, 17, 1L << 17, &finish, &d);
-	printf("ola\n");
 	mlx_loop(d.mlx);
-	printf("sou 2\n");
 	return (0);
 }

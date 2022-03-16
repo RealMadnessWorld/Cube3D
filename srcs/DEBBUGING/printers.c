@@ -46,9 +46,9 @@
 // 	printf(CLR_RED"				MAP\n\n"CLR_RST);
 
 // 	printf(CLR_YLW"player starting y position: "CLR_RST);
-// 	printf(CLR_CYN"%i\n"CLR_RST, d->map.play_y);
+// 	printf(CLR_CYN"%i\n"CLR_RST, d->posY);
 // 	printf(CLR_YLW"player starting x position: "CLR_RST);
-// 	printf(CLR_CYN"%i\n\n"CLR_RST, d->map.play_x);
+// 	printf(CLR_CYN"%i\n\n"CLR_RST, d->posX);
 
 // 	while(d->map.map[i])
 // 		printf(CLR_GRN"%s\n"CLR_RST, d->map.map[i++]);

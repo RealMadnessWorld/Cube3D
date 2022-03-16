@@ -4,7 +4,7 @@ SO ./textures/bluestone.xpm
 EA ./textures/redbrick.xpm
 
 C 200,200,200
-F 100,100,100
+F 0,100,100
 
 11111111111111111
 	1000000000111

@@ -1,6 +1,6 @@
 NOO ./textures/purplestone.xpm
 WE ./textures/wood.xpm
-SU ./textures/bluestone.xpm
+SO ./textures/bluestone.xpm
 EA ./textures/redbrick.xpm
 
 F 0,0,0

@@ -108,7 +108,8 @@ void	create_map(char	*map, t_data *d)
 		else if (ready_to_map(d))
 			map_dealer(d, line);
 	}
+	verify(d);
 	square_map(d, d->map.width);
 	map_closed(d, d->map.map);
-	verify(d);
+	convert_map(d);
 }

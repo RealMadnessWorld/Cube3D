@@ -31,6 +31,8 @@ void	convert_map(t_data *d)
 				newmap[x][y] = 9;
 			else if (is_char(d->map.map[x][y], "NSWE"))
 			{
+				if (d->posX && d->posY)
+					ft_err(d, "this is a single player game. That means ONE starting position\n");
 				set_player(d, y, x, d->map.map[x][y]);
 				newmap[x][y] = 0;
 			}
@@ -40,6 +42,8 @@ void	convert_map(t_data *d)
 		}
 		x++;
 	}
+	if (!d->posX || !d->posY)
+		ft_err(d, "Error: Missing player starting point\n");
 	newmap[x] = NULL;
 	d->mapito = newmap;
 }

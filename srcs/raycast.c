@@ -1,20 +1,6 @@
 #include "../includes/cub3d.h"
 
-// int mapito[10][10] =
-// 	{
-// 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-// 		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-// 		{1, 0, 1, 0, 0, 0, 0, 0, 0, 1},
-// 		{1, 0, 0, 1, 0, 0, 0, 0, 0, 1},
-// 		{1, 0, 1, 1, 0, 0, 0, 0, 0, 1},
-// 		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-// 		{1, 1, 1, 1, 0, 1, 1, 1, 1, 1},
-// 		{1, 1, 1, 1, 0, 1, 1, 1, 1, 1},
-// 		{1, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-// 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-
-
-static void set_distances(t_rc *rc, int x, t_data *d)
+static void cast_rays(t_rc *rc, int x, t_data *d)
 {
 	if (rc->rayDirX < 0)
 	{
@@ -54,10 +40,8 @@ static void	calc_distance(t_rc *rc, t_data *d)
 			rc->mapY += rc->stepY;
 			rc->side = 1;
 		}
-	// printf("mapX = %d\tmapY = %d\n", rc->mapX, rc->mapY);
 		if (d->mapito[rc->mapX][rc->mapY] > 0)
 			rc->hit = 1;
-	// printf("BBB\n");
 
 	}
 	if (rc->side == 0)
@@ -110,7 +94,7 @@ void calculate(t_data *d)
 	while (x < WIDTH)
 	{
 		init_rc_vars(&rc, x, d);
-		set_distances(&rc, x, d);
+		cast_rays(&rc, x, d);
 		calc_distance(&rc,d);
 		calc_height(&rc, d);
 		draw_walls(&rc, d, x);

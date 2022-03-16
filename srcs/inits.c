@@ -74,6 +74,8 @@ void	init_data(t_data *d)
 {
 	d->dirX = -1.0;
 	d->dirY = 0.0;
+	d->posX = 0;
+	d->posY = 0;
 	d->planeX = 0.0;
 	d->planeY = 0.66;
 	d->moveSpeed = 0.03;
@@ -86,8 +88,6 @@ void	init_data(t_data *d)
 	d->map.ea_img = NULL;
 	d->map.width = 0;
 	d->map.height = 0;
-	d->map.play_x = -1;
-	d->map.play_y = -1;
 	d->map.play_starts = 0;
 	init_keys(&d->keys);
 	init_textures(d);
