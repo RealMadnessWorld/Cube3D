@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/03/10 22:59:05 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/14 18:19:03 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ typedef struct s_keys
 typedef struct	s_map
 {
 	char	**map;
-	char	*no_img;
-	char	*so_img;
-	char	*we_img;
-	char	*ea_img;
-	char	*f_img;
-	char	*c_img;
+	int		*no_img;
+	int		*so_img;
+	int		*we_img;
+	int		*ea_img;
+	int		*f_color;
+	int		*c_color;
 	int		width;
 	int		height;
 	int		play_x;
@@ -166,7 +166,7 @@ void	square_map(t_data *d, int	width);
 ** Inits
 */
 void	load_image(t_data *data, int *texture, char *path, t_img *img);
-void	load_texture(t_data *data);
+void	init_textures(t_data *data);
 void	init_data(t_data *data);
 
 /*
@@ -178,6 +178,7 @@ int		ready_to_map(t_data *d);
 int		check_chars(char *str, char *chars);
 void	map_closed(t_data *d, char **map);
 void	convert_map(t_data *d);
+int		check_texture_identifier(t_data *data, char *path);
 
 /*
 ** Utils
@@ -203,8 +204,8 @@ void 	rotate(int direction, t_data *data, double rotSpeed);
 */
 void	calculate(t_data *data);
 void	draw_floor(t_rc *rc, t_data *data, int x);
-void	set_wall_directions(t_rc *rc);
-void	set_textures_coords(t_rc *rc, t_data *data, int x);
+void	set_floor(t_rc *rc);
+void	draw_walls(t_rc *rc, t_data *data, int x);
 
 /*
 ** End

@@ -21,7 +21,7 @@
 // typedef struct	s_img
 // {
 // 	void	*img;
-// 	int		*data;
+// 	int		*d;
 
 // 	int		size_l;
 // 	int		bpp;
@@ -55,7 +55,7 @@
 // 	deltaY /= step;
 // 	while (fabs(x2 - x1) > 0.01 || fabs(y2 - y1) > 0.01)
 // 	{
-// 		game->img.data[TO_COORD(x1, y1)] = 0xb3b3b3;
+// 		game->img.d[TO_COORD(x1, y1)] = 0xb3b3b3;
 // 		x1 += deltaX;
 // 		y1 += deltaY;
 // 	}
@@ -95,7 +95,7 @@
 // 		j = 0;
 // 		while (j < TILE_SIZE)
 // 		{
-// 			game->img.data[(y + i) * WIDTH + x + j] = 0x0000FF;
+// 			game->img.d[(y + i) * WIDTH + x + j] = 0x0000FF;
 // 			j++;
 // 		}
 // 		i++;
@@ -125,7 +125,7 @@
 // 		while (j < WIDTH)
 // 		{
 // 			if (is_circle(i, j, x, y, radius))
-// 				game->img.data[(int)i * WIDTH + (int)j] = 0xFFFF00;
+// 				game->img.d[(int)i * WIDTH + (int)j] = 0xFFFF00;
 // 			j++;
 // 		}
 // 		i++;
@@ -200,7 +200,7 @@
 // void	img_init(t_game *game)
 // {
 // 	game->img.img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
-// 	game->img.data = (int *)mlx_get_data_addr(game->img.img, &game->img.bpp, &game->img.size_l, &game->img.endian);
+// 	game->img.d = (int *)mlx_get_data_addr(game->img.img, &game->img.bpp, &game->img.size_l, &game->img.endian);
 // }
 
 // int		main_loop(t_game *game)

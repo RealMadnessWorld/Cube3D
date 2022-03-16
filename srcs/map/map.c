@@ -43,7 +43,6 @@ void	square_map(t_data *d, int width)
 		j = (int)ft_strlen(d->map.map[i]);
 		if (j < width)
 		{
-			printf("%s\n", d->map.map[i]);
 			d->map.map[i] = realloc(d->map.map[i], width + 1);
 			while (j != width)
 				d->map.map[i][j++] = ' ';
@@ -51,13 +50,14 @@ void	square_map(t_data *d, int width)
 		d->map.map[i][++j] = '\0';
 		i++;
 	}
+	d->map.map[i] = NULL;
 }
 
 void	map_dealer(t_data *d, char *str)
 {
 	if (is_empty(str))
 		return ;
-	if (!check_chars(str, " 10NEWS"))
+	if (!check_chars(str, "	 10NEWS"))
 		ft_err(d, "Error: Weird symbol in the map...\n");
 	if ((int)ft_strlen(str) > d->map.width)
 		d->map.width = (int)ft_strlen(str);

@@ -1,0 +1,8 @@
+NO ./textures/purplestone.xpm
+
+
+SU ./textures/bluestone.xpm
+EA ./textures/redbrick.xpm
+
+C 1,2,3
+F 3,3,4

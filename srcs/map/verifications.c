@@ -16,6 +16,22 @@ int	zero_surr(char **map, int x, int y)
 	return (1);
 }
 
+int	check_texture_identifier(t_data *d, char *path)
+{
+	if (ft_strncmp(path, "NO", 2) != 0 && ft_strncmp(path, "SO", 2) != 0
+		&& ft_strncmp(path, "WE", 2) != 0 && ft_strncmp(path, "EA", 2) != 0)
+	{
+		ft_err(d, "Error: Bad texture identifier. Use 'NO' 'SO' 'WE' 'EA'");
+		return (0);
+	}
+	if (*(path + 2) != ' ' && *(path + 2) != '	')
+	{
+		ft_err(d, "Error: Bad configuration of texture identifier");
+		return (0);
+	}
+	return (1);
+}
+
 void	map_closed(t_data *d, char **map)
 {
 	int	y;
@@ -41,6 +57,7 @@ void	map_closed(t_data *d, char **map)
 			}
 			x++;
 		}
+		printf("aqui\n");
 		y++;
 	}
 }

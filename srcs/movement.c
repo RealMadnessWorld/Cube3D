@@ -1,108 +1,95 @@
 #include "../includes/cub3d.h"
 
-// int mapa[10][10] =
-	// {
-		// {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-		// {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-		// {1, 0, 1, 1, 0, 0, 0, 0, 0, 1},
-		// {1, 0, 0, 1, 0, 0, 0, 0, 0, 1},
-		// {1, 0, 1, 1, 0, 0, 0, 0, 0, 1},
-		// {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-		// {1, 1, 1, 1, 0, 1, 1, 1, 1, 1},
-		// {1, 1, 1, 1, 0, 1, 1, 1, 1, 1},
-		// {1, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-		// {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-
-static void move(int direction, t_data *data)
+static void move(int direction, t_data *d)
 {
 	if (direction == 1)
 	{
-		if (!data->mapito[(int)(data->posX + data->dirX * data->moveSpeed)][(int)(data->posY)])
-			data->posX += data->dirX * data->moveSpeed;
-		if (!data->mapito[(int)(data->posX)][(int)(data->posY + data->dirY * data->moveSpeed)])
-			data->posY += data->dirY * data->moveSpeed;
+		if (!d->mapito[(int)(d->posX + d->dirX * d->moveSpeed)][(int)(d->posY)])
+			d->posX += d->dirX * d->moveSpeed;
+		if (!d->mapito[(int)(d->posX)][(int)(d->posY + d->dirY * d->moveSpeed)])
+			d->posY += d->dirY * d->moveSpeed;
 	}
 	else if (direction == -1)
 	{
-		if (!data->mapito[(int)(data->posX - data->dirX * data->moveSpeed)][(int)(data->posY)])
-			data->posX -= data->dirX * data->moveSpeed;
-		if (!data->mapito[(int)(data->posX)][(int)(data->posY - data->dirY * data->moveSpeed)])
-			data->posY -= data->dirY * data->moveSpeed;
+		if (!d->mapito[(int)(d->posX - d->dirX * d->moveSpeed)][(int)(d->posY)])
+			d->posX -= d->dirX * d->moveSpeed;
+		if (!d->mapito[(int)(d->posX)][(int)(d->posY - d->dirY * d->moveSpeed)])
+			d->posY -= d->dirY * d->moveSpeed;
 	}
 }
 
-void rotate(int direction, t_data *data, double rotSpeed)
+void rotate(int direction, t_data *d, double rotSpeed)
 {
 	double	oldDirX;
 	double	oldPlaneX;
 
-	oldDirX = data->dirX;
-	oldPlaneX = data->planeX;
+	oldDirX = d->dirX;
+	oldPlaneX = d->planeX;
 	if (direction == 1)
 	{
-		data->dirX = data->dirX * cos(-rotSpeed) - data->dirY * sin(-rotSpeed);
-		data->dirY = oldDirX * sin(-rotSpeed) + data->dirY * cos(-rotSpeed);
-		data->planeX = data->planeX * cos(-rotSpeed) - data->planeY * sin(-rotSpeed);
-		data->planeY = oldPlaneX * sin(-rotSpeed) + data->planeY * cos(-rotSpeed);
+		d->dirX = d->dirX * cos(-rotSpeed) - d->dirY * sin(-rotSpeed);
+		d->dirY = oldDirX * sin(-rotSpeed) + d->dirY * cos(-rotSpeed);
+		d->planeX = d->planeX * cos(-rotSpeed) - d->planeY * sin(-rotSpeed);
+		d->planeY = oldPlaneX * sin(-rotSpeed) + d->planeY * cos(-rotSpeed);
 	}
 	else if (direction == -1)
 	{
-		data->dirX = data->dirX * cos(rotSpeed) - data->dirY * sin(rotSpeed);
-		data->dirY = oldDirX * sin(rotSpeed) + data->dirY * cos(rotSpeed);
-		data->planeX = data->planeX * cos(rotSpeed) - data->planeY * sin(rotSpeed);
-		data->planeY = oldPlaneX * sin(rotSpeed) + data->planeY * cos(rotSpeed);
+		d->dirX = d->dirX * cos(rotSpeed) - d->dirY * sin(rotSpeed);
+		d->dirY = oldDirX * sin(rotSpeed) + d->dirY * cos(rotSpeed);
+		d->planeX = d->planeX * cos(rotSpeed) - d->planeY * sin(rotSpeed);
+		d->planeY = oldPlaneX * sin(rotSpeed) + d->planeY * cos(rotSpeed);
 	}
 }
 
-int	key_release(int key, t_data *data)
+int	key_release(int key, t_data *d)
 {
 	if (key == W_KEY)
-		data->keys.key_w = 0;
+		d->keys.key_w = 0;
 	if (key == S_KEY)
-		data->keys.key_s = 0;
+		d->keys.key_s = 0;
 	if (key == A_KEY)
-		data->keys.key_a = 0;
+		d->keys.key_a = 0;
 	if (key == D_KEY)
-		data->keys.key_d = 0;
+		d->keys.key_d = 0;
 	if (key == KEY_ARR_RIGHT)
-		data->keys.key_right = 0;
+		d->keys.key_right = 0;
 	if (key == KEY_ARR_LEFT)
-		data->keys.key_left = 0;
+		d->keys.key_left = 0;
 	if (key == ESC_KEY)
-		data->keys.key_esc = 0;
+		d->keys.key_esc = 0;
 	return (0);
 }
 
-int	key_press(int key, t_data *data)
+int	key_press(int key, t_data *d)
 {
 	if (key == W_KEY)
-		data->keys.key_w = 1;
+		d->keys.key_w = 1;
 	if (key == S_KEY)
-		data->keys.key_s = 1;
+		d->keys.key_s = 1;
 	if (key == A_KEY)
-		data->keys.key_a = 1;
+		d->keys.key_a = 1;
 	if (key == D_KEY)
-		data->keys.key_d = 1;
+		d->keys.key_d = 1;
 	if (key == KEY_ARR_RIGHT)
-		data->keys.key_right = 1;
+		d->keys.key_right = 1;
 	if (key == KEY_ARR_LEFT)
-		data->keys.key_left = 1;
+		d->keys.key_left = 1;
 	if (key == ESC_KEY)
-		data->keys.key_esc = 1;
+		d->keys.key_esc = 1;
 	return (0);
 }
 
-int key_hook(t_data *data)
+int key_hook(t_data *d)
 {
-	if (data->keys.key_w)
-		move(1, data);
-	else if (data->keys.key_s)
-		move(-1, data);
-	else if (data->keys.key_d || data->keys.key_right)
-		rotate(1, data, data->rotSpeed);
-	else if (data->keys.key_a || data->keys.key_left)
-		rotate(-1, data, data->rotSpeed);
-	else if (data->keys.key_esc)
-		finish(data);
+	if (d->keys.key_w)
+		move(1, d);
+	else if (d->keys.key_s)
+		move(-1, d);
+	else if (d->keys.key_d || d->keys.key_right)
+		rotate(1, d, d->rotSpeed);
+	else if (d->keys.key_a || d->keys.key_left)
+		rotate(-1, d, d->rotSpeed);
+	else if (d->keys.key_esc)
+		finish(d);
 	return (0);
 }
