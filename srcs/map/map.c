@@ -43,6 +43,7 @@ void	square_map(t_data *d, int width)
 		j = (int)ft_strlen(d->map.map[i]);
 		if (j < width)
 		{
+			printf("%s\n", d->map.map[i]);
 			d->map.map[i] = realloc(d->map.map[i], width + 1);
 			while (j != width)
 				d->map.map[i][j++] = ' ';

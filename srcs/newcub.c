@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 	init_data(&data);
 	create_map(argv[1], &data);
 	convert_map(&data);
-	// print_map_shit(&data);
+	print_map_shit(&data);
 	while (i < HEIGHT)
 		ft_bzero(data.buf[i++], WIDTH);
 	load_texture(&data);

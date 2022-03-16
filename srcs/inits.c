@@ -37,14 +37,10 @@ void load_texture(t_data *data)
 			exit(-1);
 		ft_bzero(data->texture[i++], texHeight * texWidth);
 	}
-	load_image(data, data->texture[0], "textures/eagle.xpm", &img);
-	load_image(data, data->texture[1], "textures/redbrick.xpm", &img);
-	load_image(data, data->texture[2], "textures/purplestone.xpm", &img);
-	load_image(data, data->texture[3], "textures/greystone.xpm", &img);
-	load_image(data, data->texture[4], "textures/bluestone.xpm", &img);
-	load_image(data, data->texture[5], "textures/mossy.xpm", &img);
-	load_image(data, data->texture[6], "textures/wood.xpm", &img);
-	load_image(data, data->texture[7], "textures/colorstone.xpm", &img);
+	load_image(data, data->texture[0], data->map.no_img, &img);
+	load_image(data, data->texture[1], data->map.so_img, &img);
+	load_image(data, data->texture[2], data->map.we_img, &img);
+	load_image(data, data->texture[3], data->map.ea_img, &img);
 }
 
 void	init_keys(t_keys *keys)
