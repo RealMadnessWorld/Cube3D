@@ -36,3 +36,14 @@ int	ready_to_map(t_data *d)
 		return (1);
 	return (0);
 }
+
+void	ft_be_minus_one(void *str, size_t len)
+{
+	size_t	i;
+	char	*tmp;
+
+	i = 0;
+	tmp = str;
+	while (i < len)
+		tmp[i++] = -1;
+}

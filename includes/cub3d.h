@@ -189,6 +189,7 @@ int		is_char(char c, char *str);
 int		is_empty(char *str);
 void	ft_err(t_data *d, char *error);
 char	*check_img_path(char *path, t_data *d);
+void	ft_be_minus_one(void *str, size_t len);
 
 /*
 ** Movement

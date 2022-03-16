@@ -59,8 +59,8 @@ void	verify(t_data *d)
 	printf ("we %d\n", *d->map.we_img);
 	printf ("ea %d\n", *d->map.ea_img);
 
-	if (!(*(d->map.ea_img)) || !(*(d->map.so_img)) || !(*(d->map.we_img))
-			|| !(*(d->map.no_img)))
+	if ((*d->map.ea_img) == -1 || (*d->map.so_img) == -1
+			|| (*d->map.we_img) == -1 || (*d->map.no_img) == -1)
 		ft_err(d, "Error: Missing texture(s)\n");
 	else if (!d->map.c_color || !d->map.f_color)
 		ft_err(d, "Error: Missing color(s)\n");

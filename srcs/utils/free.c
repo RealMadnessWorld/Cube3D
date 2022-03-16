@@ -17,6 +17,11 @@ void	free_map(t_data *d)
 			free(d->map.c_color);
 		if (d->map.f_color)
 			free(d->map.f_color);
+	}
+}
+
+void	be_free(t_data *d)
+{
 		if (d->map.no_img)
 			free(d->map.no_img);
 		if (d->map.so_img)
@@ -25,10 +30,5 @@ void	free_map(t_data *d)
 			free(d->map.we_img);
 		if (d->map.ea_img)
 			free(d->map.ea_img);
-	}
-}
-
-void	be_free(t_data *d)
-{
 	free_map(d);
 }
