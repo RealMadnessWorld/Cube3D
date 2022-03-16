@@ -57,6 +57,7 @@ void	map_closed(t_data *d, char **map)
 			}
 			x++;
 		}
+		printf("aqui\n");
 		y++;
 	}
 }

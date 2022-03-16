@@ -53,6 +53,8 @@ int main(int argc, char **argv)
 	mlx_hook(d.win, X_EVENT_KEY_PRESS, 1L<<0, &key_press, &d);
 	mlx_hook(d.win, KEYRELEASE, 1L<<1, &key_release, &d);
 	mlx_hook(d.win, 17, 1L << 17, &finish, &d);
+	printf("ola\n");
 	mlx_loop(d.mlx);
+	printf("sou 2\n");
 	return (0);
 }
