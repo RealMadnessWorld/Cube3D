@@ -44,6 +44,8 @@ void load_image(t_data *d, int *texture, char *path, t_img *img)
 	y = 0;
 	truePath = get_path(d, path);
 	chk_img_path(truePath);
+	if (!find_extention(truePath, ".xpm"))
+		ft_err(d, "Error: not a \".xpm\" file");
 	img->img = mlx_xpm_file_to_image(d->mlx, truePath, &img->img_width, &img->img_height);
 	img->data = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->size_l, &img->endian);
 	while (y < img->img_height)

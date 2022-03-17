@@ -51,7 +51,6 @@ void	map_closed(t_data *d, char **map)
 	}
 }
 
-
 void	verify(t_data *d)
 {
 	printf ("no %d\n", *d->map.no_img);
