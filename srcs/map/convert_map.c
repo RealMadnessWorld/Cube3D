@@ -19,11 +19,11 @@ void	convert_map(t_data *d)
 	int	x;
 	int	y;
 
-	newmap = (int **)malloc(sizeof(int *) * d->map.height);
+	newmap = (int **)malloc(sizeof(int **) * d->map.height);
 	x = 0;
 	while (d->map.map[x])
 	{
-		newmap[x] = (int *)malloc(sizeof(int) * d->map.width);
+		newmap[x] = (int *)malloc(sizeof(int *) * d->map.width);
 		y = 0;
 		while (d->map.map[x][y])
 		{

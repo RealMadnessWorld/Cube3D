@@ -43,9 +43,13 @@ void	map_closed(t_data *d, char **map)
 		x = 0;
 		while (map[y][x])
 		{
+			printf("(y) height = %d\n", d->map.height);
+			printf("(x) width = %d\n", d->map.width);
 			if (is_char(map[y][x], "0EWSN") && !zero_surr(map, x, y))
 				ft_err(d, "Map not closed. You can't trick me! I am machine!!\n");
 			x++;
+			printf("y = %d\n", y);
+			printf("x = %d\n", x);
 		}
 		y++;
 	}

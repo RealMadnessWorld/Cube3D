@@ -111,5 +111,7 @@ void	create_map(char	*map, t_data *d)
 	verify(d);
 	square_map(d, d->map.width);
 	map_closed(d, d->map.map);
+	printf("entrei\n");
 	convert_map(d);
+	printf("sai\n");
 }
