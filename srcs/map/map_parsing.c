@@ -112,4 +112,7 @@ void	create_map(char	*map, t_data *d)
 	square_map(d, d->map.width);
 	map_closed(d, d->map.map);
 	convert_map(d);
+	d->map.mini_tilesize = 16;
+	d->map.mini_width = d->map.width * d->map.mini_tilesize;
+	d->map.mini_height = d->map.height * d->map.mini_tilesize;
 }

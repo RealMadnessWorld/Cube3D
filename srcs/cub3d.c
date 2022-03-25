@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 19:53:20 by yohlee            #+#    #+#             */
-/*   Updated: 2022/03/16 19:54:41 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/25 18:12:20 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,18 @@ static void draw(t_data *d)
 	int	y;
 	int	x;
 
-	y = 0;
-	while (y < HEIGHT)
+	y = -1;
+	while (++y < HEIGHT)
 	{
-		x = 0;
-		while (x < WIDTH)
-			d->img.data[y * WIDTH + x] = d->buf[y][x++];
-		y++;
+		x = -1;
+		while (++x < WIDTH)
+		{
+			if (x <= d->map.mini_width && y <= d->map.mini_height)
+				continue ;
+		d->img.data[y * WIDTH + x] = d->buf[y][x];
+		}
 	}
+	draw_minimap(d);
 	mlx_put_image_to_window(d->mlx, d->win, d->img.img, 0, 0);
 }
 

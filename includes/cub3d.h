@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/03/16 18:14:58 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/03/25 18:13:37 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ typedef struct	s_map
 	int		play_y;
 	char	play_dir;
 	int		play_starts;
+	int		mini_tilesize;
+	int		mini_width;
+	int		mini_height;
 }				t_map;
 
 typedef struct s_img
@@ -160,6 +163,7 @@ typedef struct s_data
 void	create_map(char	*map, t_data *d);
 void	map_dealer(t_data *d, char *str);
 void	square_map(t_data *d, int	width);
+void	draw_minimap(t_data *d);
 
 /*
 ** Inits

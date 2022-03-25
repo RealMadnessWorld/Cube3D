@@ -53,11 +53,6 @@ void	map_closed(t_data *d, char **map)
 
 void	verify(t_data *d)
 {
-	printf ("no %d\n", *d->map.no_img);
-	printf ("so %d\n", *d->map.so_img);
-	printf ("we %d\n", *d->map.we_img);
-	printf ("ea %d\n", *d->map.ea_img);
-
 	if ((*d->map.ea_img) == -1 || (*d->map.so_img) == -1
 			|| (*d->map.we_img) == -1 || (*d->map.no_img) == -1)
 		ft_err(d, "Error: Missing texture(s)\n");
