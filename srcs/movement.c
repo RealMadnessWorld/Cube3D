@@ -83,13 +83,13 @@ int key_hook(t_data *d)
 {
 	if (d->keys.key_w)
 		move(1, d);
-	else if (d->keys.key_s)
+	if (d->keys.key_s)
 		move(-1, d);
-	else if (d->keys.key_d || d->keys.key_right)
+	if (d->keys.key_d || d->keys.key_right)
 		rotate(1, d, d->rotSpeed);
-	else if (d->keys.key_a || d->keys.key_left)
+	if (d->keys.key_a || d->keys.key_left)
 		rotate(-1, d, d->rotSpeed);
-	else if (d->keys.key_esc)
+	if (d->keys.key_esc)
 		finish(d);
 	return (0);
 }

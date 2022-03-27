@@ -33,21 +33,25 @@ static int	*save_color(t_data *d, char *str)
 	char	**split;
 	int		*colors;
 	int		i;
+	int		badRange;
 
-	i = 0;
 	split = ft_split(str, ',');
+	i = 0;
+	badRange = 0;
 	if (split[3])
 		ft_err(d, "Error: Colors have 3 elements (R, G, B)");
 	colors = (int *)malloc(sizeof(int) * 3);
 	while (i < 3)
 	{
 		colors[i] = ft_atoi(split[i]);
-		if (colors[i] < 0 || colors[i] > 255)
-			ft_err(d, "Error: Color range must be between 0 and 255");
 		free(split[i]);
+		if (colors[i] < 0 || colors[i] > 255)
+			badRange = 1;
 		i++;
 	}
 	free(split);
+	if (badRange)
+		ft_err(d, "Error: Color range must be between 0 and 255");
 	return (colors);
 }
 
@@ -114,8 +118,8 @@ void	create_map(char	*map, t_data *d)
 	square_map(d, d->map.width);
 	map_closed(d, d->map.map);
 	convert_map(d);
-	// d->map.mini_tilesize = 16;
-	// d->map.mini_width = d->map.width * d->map.mini_tilesize;
-	// d->map.mini_height = d->map.height * d->map.mini_tilesize;
+	d->map.mini_tilesize = 320 / (d->map.width + d->map.height);
+	d->map.mini_width = d->map.width * d->map.mini_tilesize;
+	d->map.mini_height = d->map.height * d->map.mini_tilesize;
 	close(fd);
 }
