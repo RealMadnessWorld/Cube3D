@@ -64,6 +64,7 @@ fclean:
 		@echo "$(_RED)______________________________________________________________________________$(_RESET)"
 		@echo "$(_RED) Farewell! Someone is really going to miss you. But, it's not going to be me! $(_RESET)"
 		@echo "$(_RED)‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾$(_RESET)"
+		# @say "Farewell! Someone is really going to miss you. But, it's not going to be me!"
 
 re: fclean all
 

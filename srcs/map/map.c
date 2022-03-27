@@ -47,7 +47,7 @@ void	square_map(t_data *d, int width)
 			while (j != width)
 				d->map.map[i][j++] = ' ';
 		}
-		d->map.map[i][++j] = '\0';
+		d->map.map[i][j] = '\0';
 		i++;
 	}
 	d->map.map[i] = NULL;

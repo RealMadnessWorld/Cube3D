@@ -74,6 +74,7 @@ void	init_keys(t_keys *keys)
 
 void	init_data(t_data *d)
 {
+	d->map.map = NULL;
 	d->dirX = -1.0;
 	d->dirY = 0.0;
 	d->posX = 0;
