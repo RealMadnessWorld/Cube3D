@@ -43,13 +43,9 @@ void	map_closed(t_data *d, char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			printf("(y) height = %d\n", d->map.height);
-			printf("(x) width = %d\n", d->map.width);
 			if (is_char(map[y][x], "0EWSN") && !zero_surr(map, x, y))
 				ft_err(d, "Map not closed. You can't trick me! I am machine!!\n");
 			x++;
-			printf("y = %d\n", y);
-			printf("x = %d\n", x);
 		}
 		y++;
 	}
@@ -57,11 +53,6 @@ void	map_closed(t_data *d, char **map)
 
 void	verify(t_data *d)
 {
-	printf ("no %d\n", *d->map.no_img);
-	printf ("so %d\n", *d->map.so_img);
-	printf ("we %d\n", *d->map.we_img);
-	printf ("ea %d\n", *d->map.ea_img);
-
 	if ((*d->map.ea_img) == -1 || (*d->map.so_img) == -1
 			|| (*d->map.we_img) == -1 || (*d->map.no_img) == -1)
 		ft_err(d, "Error: Missing texture(s)\n");

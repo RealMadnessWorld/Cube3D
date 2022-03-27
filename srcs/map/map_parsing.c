@@ -47,6 +47,7 @@ static int	*save_color(t_data *d, char *str)
 		free(split[i]);
 		i++;
 	}
+	free(split);
 	return (colors);
 }
 
@@ -107,11 +108,14 @@ void	create_map(char	*map, t_data *d)
 			img_dealer(d, line);
 		else if (ready_to_map(d))
 			map_dealer(d, line);
+		free(line);
 	}
 	verify(d);
 	square_map(d, d->map.width);
 	map_closed(d, d->map.map);
-	printf("entrei\n");
 	convert_map(d);
-	printf("sai\n");
+	// d->map.mini_tilesize = 16;
+	// d->map.mini_width = d->map.width * d->map.mini_tilesize;
+	// d->map.mini_height = d->map.height * d->map.mini_tilesize;
+	close(fd);
 }
