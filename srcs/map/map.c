@@ -27,9 +27,9 @@ int	check_chars(char *str, char *chars)
 void	start_map(t_data *d)
 {
 	if (!d->map.map)
-		d->map.map = (char **)malloc(sizeof(char *) * d->map.height);
+		d->map.map = (char **)malloc(sizeof(char *) * d->map.height + 1);
 	else
-		d->map.map = (char **)realloc(d->map.map, sizeof(char *) * d->map.height);
+		d->map.map = (char **)realloc(d->map.map, sizeof(char *) * d->map.height + 1);
 }
 
 void	square_map(t_data *d, int width)

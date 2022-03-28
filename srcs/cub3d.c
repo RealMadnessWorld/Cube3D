@@ -58,6 +58,7 @@ int main(int argc, char **argv)
 		ft_error("Error: I need a map. And one map only!\n");
 	init_data(&d);
 	create_map(argv[1], &d);
+	// print_map_shit(&d);
 	while (i < HEIGHT)
 		ft_bzero(d.buf[i++], WIDTH);
 	mlx_loop_hook(d.mlx, &main_loop, &d);
