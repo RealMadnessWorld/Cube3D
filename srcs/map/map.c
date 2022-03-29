@@ -26,10 +26,27 @@ int	check_chars(char *str, char *chars)
 
 void	start_map(t_data *d)
 {
+	int		i;
+	char	**tmp;
+
+	i = 0;
 	if (!d->map.map)
-		d->map.map = (char **)malloc(sizeof(char *) * 2);
-	else
-		d->map.map = (char **)realloc(d->map.map, sizeof(char *) * d->map.height + 1);
+	{
+		d->map.map = (char **)malloc(sizeof(char *) * d->map.height + 1);
+		return ;
+	}
+	tmp = (char **)malloc(sizeof(char *) * d->map.height + 1);
+	if (!tmp)
+		ft_err(d, "Malloc failed! U did the impossible! Good for you!");
+	
+	while(d->map.map[i])
+	{
+		tmp[i] = ft_strdup(d->map.map[i]);
+		free(d->map.map[i]);
+		i++;
+	}
+	free(d->map.map);
+	d->map.map = tmp;
 }
 
 void	square_map(t_data *d, int width)
