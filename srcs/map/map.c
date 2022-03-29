@@ -72,8 +72,14 @@ void	square_map(t_data *d, int width)
 
 void	map_dealer(t_data *d, char *str)
 {
+	if (d->empty > 0 && !is_empty(str))
+		ft_err(d, "empty line in the middle of the map?");
 	if (is_empty(str))
+	{
+		if (d->map.map)
+			d->empty = 1;
 		return ;
+	}
 	if (!check_chars(str, "	 10NEWS"))
 		ft_err(d, "Error: Weird symbol in the map...\n");
 	if ((int)ft_strlen(str) > d->map.width)

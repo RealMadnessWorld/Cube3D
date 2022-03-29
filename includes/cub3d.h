@@ -150,6 +150,7 @@ typedef struct s_data
 	double	moveSpeed;
 	double	rotSpeed;
 	int		**mapito;
+	int		empty;
 } t_data;
 
 /****************************\
