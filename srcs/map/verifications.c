@@ -44,7 +44,7 @@ void	map_closed(t_data *d, char **map)
 		while (map[y][x])
 		{
 			if (is_char(map[y][x], "0EWSN") && !zero_surr(map, x, y))
-				ft_err(d, "Map not closed. You can't trick me! I am machine!!\n");
+				ft_err(d, "Map not closed. You can't trick me! I am machine!!");
 			x++;
 		}
 		y++;
@@ -55,9 +55,9 @@ void	verify(t_data *d)
 {
 	if ((*d->map.ea_img) == -1 || (*d->map.so_img) == -1
 			|| (*d->map.we_img) == -1 || (*d->map.no_img) == -1)
-		ft_err(d, "Error: Missing texture(s)\n");
+		ft_err(d, "Error: Missing texture(s)");
 	else if (!d->map.c_color || !d->map.f_color)
-		ft_err(d, "Error: Missing color(s)\n");
+		ft_err(d, "Error: Missing color(s)");
 	else if (!d->map.map)
-		ft_err(d, "Error: Where's the map?\n");
+		ft_err(d, "Error: Where's the map?");
 }

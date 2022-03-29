@@ -65,7 +65,7 @@ static void	color_saver(t_data *d, int **save, char *str)
 	{
 		if (!ft_isdigit(str[i]) && str[i] != ',' && str[i] != ' '
 			&& str[i] != '	')
-			ft_err(d, "Error: Colors are made of numbers... weird I know!");
+			ft_err(d, "Error: Colors are made of positive numbers");
 		i++;
 	}
 	if (!*save)
