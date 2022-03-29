@@ -29,16 +29,17 @@ void	start_map(t_data *d)
 	int		i;
 	char	**tmp;
 
-	i = 0;
 	if (!d->map.map)
 	{
 		d->map.map = (char **)malloc(sizeof(char *) * d->map.height + 1);
+		if (!d->map.map)
+			ft_err(d, "Malloc failed! U did the impossible! Good for you!");
 		return ;
 	}
 	tmp = (char **)malloc(sizeof(char *) * d->map.height + 1);
 	if (!tmp)
 		ft_err(d, "Malloc failed! U did the impossible! Good for you!");
-	
+	i = 0;
 	while(d->map.map[i])
 	{
 		tmp[i] = ft_strdup(d->map.map[i]);
@@ -67,7 +68,6 @@ void	square_map(t_data *d, int width)
 		d->map.map[i][j] = '\0';
 		i++;
 	}
-	d->map.map[i] = NULL;
 }
 
 void	map_dealer(t_data *d, char *str)

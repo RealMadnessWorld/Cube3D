@@ -44,6 +44,5 @@ void	convert_map(t_data *d)
 	}
 	if (!d->posX || !d->posY)
 		ft_err(d, "Error: Missing player starting point\n");
-	newmap[x] = NULL;
 	d->mapito = newmap;
 }
