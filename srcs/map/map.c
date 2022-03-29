@@ -27,7 +27,7 @@ int	check_chars(char *str, char *chars)
 void	start_map(t_data *d)
 {
 	if (!d->map.map)
-		d->map.map = (char **)malloc(sizeof(char *) * d->map.height + 1);
+		d->map.map = (char **)malloc(sizeof(char *) * 2);
 	else
 		d->map.map = (char **)realloc(d->map.map, sizeof(char *) * d->map.height + 1);
 }

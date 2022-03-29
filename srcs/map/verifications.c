@@ -1,17 +1,51 @@
 #include "../../includes/cub3d.h"
 
+/*
+**	dir = 1 means top or bot line
+**	dir = 2 means that is checking the side part of the wall
+*/
+
+static int	all_ones(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(str[i++])
+	{
+		if (str[i] != '1' || str[i] != ' ')
+			return (0);
+	}
+	return (1);
+}
+
 int	zero_surr(char **map, int x, int y)
 {
 	if (is_char(map[y][x], "0NSEW"))
 	{
-		if (!is_char(map[y - 1][x], "10NSEW"))
+		if (map[y - 1])
+		{
+			if (!is_char(map[y - 1][x], "10NSEW"))
+				return (0);
+		}
+		else if (!all_ones(map[y]))
 			return (0);
-		if (!is_char(map[y + 1][x], "10NSEW"))
+		if (map[y + 1])
+		{
+			if (!is_char(map[y + 1][x], "10NSEW"))
+				return (0);
+		}
+		else if (!all_ones(map[y]))
 			return (0);
-		if (!is_char(map[y][x - 1], "10NSEW"))
-			return (0);
-		if (!is_char(map[y][x + 1], "10NSEW"))
-			return (0);
+		if (map[y][x - 1])
+		{
+			if (!is_char(map[y][x - 1], "10NSEW"))
+				return (0);
+		}
+		if (map[y][x + 1])
+		{
+			if (!is_char(map[y][x + 1], "10NSEW"))
+				return (0);
+		}
 	}
 	return (1);
 }

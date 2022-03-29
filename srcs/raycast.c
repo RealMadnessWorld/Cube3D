@@ -1,6 +1,6 @@
 #include "../includes/cub3d.h"
 
-static void cast_rays(t_rc *rc, int x, t_data *d)
+static void cast_rays(t_rc *rc, t_data *d)
 {
 	if (rc->rayDirX < 0)
 	{
@@ -94,7 +94,7 @@ void calculate(t_data *d)
 	while (x < WIDTH)
 	{
 		init_rc_vars(&rc, x, d);
-		cast_rays(&rc, x, d);
+		cast_rays(&rc, d);
 		calc_distance(&rc,d);
 		calc_height(&rc, d);
 		draw_walls(&rc, d, x);
