@@ -31,12 +31,12 @@ void	start_map(t_data *d)
 
 	if (!d->map.map)
 	{
-		d->map.map = (char **)malloc(sizeof(char *) * d->map.height + 1);
+		d->map.map = (char **)malloc(sizeof(char *) * (d->map.height + 1));
 		if (!d->map.map)
 			ft_err(d, "Malloc failed! U did the impossible! Good for you!");
 		return ;
 	}
-	tmp = (char **)malloc(sizeof(char *) * d->map.height + 1);
+	tmp = (char **)malloc(sizeof(char *) * (d->map.height + 1));
 	if (!tmp)
 		ft_err(d, "Malloc failed! U did the impossible! Good for you!");
 	i = 0;
@@ -81,4 +81,5 @@ void	map_dealer(t_data *d, char *str)
 	d->map.height += 1;
 	start_map(d);
 	d->map.map[d->map.height - 1] = ft_strdup(str);
+	d->map.map[d->map.height] = NULL;
 }
