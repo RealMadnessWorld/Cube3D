@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:39:28 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 18:54:07 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/04 20:20:13 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	is_image(t_data *d, char *str)
 	}
 	else if (str[0] != '1' && str[0] != '0' && str[0] != 32
 		&& str[0] != 9 && str[0] != 10 && str[0] != 0)
-		ft_err(d, "Error: Unknown symbol found in the file");
+		ft_err(d, "Error: Invalid data/file provided");
 	return (0);
 }
 

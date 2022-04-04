@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 19:53:20 by yohlee            #+#    #+#             */
-/*   Updated: 2022/04/04 17:35:13 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/04 19:27:17 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	if (argc != 2)
-		ft_error("Error: I need a map. And one map only!\n");
+		ft_error("Error: I need a map. And one map only!");
 	init_data(&d);
 	create_map(argv[1], &d);
 	while (i < HEIGHT)
