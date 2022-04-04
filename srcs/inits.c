@@ -14,22 +14,22 @@
 
 void	init_textures(t_data *d)
 {
-	d->map.no_img = (int *)malloc(sizeof(int) * (texHeight * texWidth));
+	d->map.no_img = (int *)malloc(sizeof(int) * (TEXHEIGHT * TEXWIDTH));
 	if (!(d->map.no_img))
 		exit(-1);
-	ft_be_minus_one(d->map.no_img, texHeight * texWidth);
-	d->map.so_img = (int *)malloc(sizeof(int) * (texHeight * texWidth));
+	ft_be_minus_one(d->map.no_img, TEXHEIGHT * TEXWIDTH);
+	d->map.so_img = (int *)malloc(sizeof(int) * (TEXHEIGHT * TEXWIDTH));
 	if (!(d->map.so_img))
 		exit(-1);
-	ft_be_minus_one(d->map.so_img, texHeight * texWidth);
-	d->map.we_img = (int *)malloc(sizeof(int) * (texHeight * texWidth));
+	ft_be_minus_one(d->map.so_img, TEXHEIGHT * TEXWIDTH);
+	d->map.we_img = (int *)malloc(sizeof(int) * (TEXHEIGHT * TEXWIDTH));
 	if (!(d->map.we_img))
 		exit(-1);
-	ft_be_minus_one(d->map.we_img, texHeight * texWidth);
-	d->map.ea_img = (int *)malloc(sizeof(int) * (texHeight * texWidth));
+	ft_be_minus_one(d->map.we_img, TEXHEIGHT * TEXWIDTH);
+	d->map.ea_img = (int *)malloc(sizeof(int) * (TEXHEIGHT * TEXWIDTH));
 	if (!(d->map.ea_img))
 		exit(-1);
-	ft_be_minus_one(d->map.ea_img, texHeight * texWidth);
+	ft_be_minus_one(d->map.ea_img, TEXHEIGHT * TEXWIDTH);
 }
 
 char	*get_path(t_data *d, char *path)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_parsing.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jarsenio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/04 17:39:28 by jarsenio          #+#    #+#             */
+/*   Updated: 2022/04/04 17:39:30 by jarsenio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 int	is_image(t_data *d, char *str)
@@ -23,7 +35,7 @@ int	is_image(t_data *d, char *str)
 		return (1);
 	}
 	else if (str[0] != '1' && str[0] != '0' && str[0] != 32
-				&& str[0] != 9 && str[0] != 10 && str[0] != 0)
+		&& str[0] != 9 && str[0] != 10 && str[0] != 0)
 		ft_err(d, "Error: Unknown symbol found in the file");
 	return (0);
 }
@@ -33,11 +45,11 @@ static int	*save_color(t_data *d, char *str)
 	char	**split;
 	int		*colors;
 	int		i;
-	int		badRange;
+	int		badrange;
 
 	split = ft_split(str, ',');
 	i = 0;
-	badRange = 0;
+	badrange = 0;
 	if (split[3])
 		ft_err(d, "Error: Colors have 3 elements (R, G, B)");
 	colors = (int *)malloc(sizeof(int) * 3);
@@ -46,11 +58,11 @@ static int	*save_color(t_data *d, char *str)
 		colors[i] = ft_atoi(split[i]);
 		free(split[i]);
 		if (colors[i] < 0 || colors[i] > 255)
-			badRange = 1;
+			badrange = 1;
 		i++;
 	}
 	free(split);
-	if (badRange)
+	if (badrange)
 		ft_err(d, "Error: Color range must be between 0 and 255");
 	return (colors);
 }
@@ -105,7 +117,7 @@ void	create_map(char	*map, t_data *d)
 
 	fd = open(map, O_RDONLY);
 	ret = 1;
-	while(ret == 1)
+	while (ret == 1)
 	{
 		ret = get_next_line(fd, &line);
 		if (is_image(d, line))

@@ -75,12 +75,12 @@ static void	calc_height(t_rc *rc, t_data *d)
 	else
 		rc->wallX = d->posX + rc->pWallDst * rc->rayDirX;
 	rc->wallX -= floor(rc->wallX);
-	rc->texX = (int)(rc->wallX * (double)texWidth);
+	rc->texX = (int)(rc->wallX * (double)TEXWIDTH);
 	if (rc->side == 0 && rc->rayDirX > 0)
-		rc->texX = texWidth - rc->texX - 1;
+		rc->texX = TEXWIDTH - rc->texX - 1;
 	if (rc->side == 1 && rc->rayDirY < 0)
-		rc->texX = texWidth - rc->texX - 1;
-	rc->step = 1.0 * texHeight / rc->lineHeight;
+		rc->texX = TEXWIDTH - rc->texX - 1;
+	rc->step = 1.0 * TEXHEIGHT / rc->lineHeight;
 	rc->texPos = (rc->drawStart - HEIGHT / 2 + rc->lineHeight / 2) * rc->step;
 }
 
