@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 18:27:51 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/04 18:54:07 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ typedef struct	s_map
 	int		*so_img;
 	int		*we_img;
 	int		*ea_img;
-	int		*f_color;
-	int		*c_color;
+	int		*f_clr;
+	int		*c_clr;
 	int		width;
 	int		height;
 	int		play_x;
@@ -132,17 +132,17 @@ typedef struct s_rc
 		double	texPos;
 		int		texY;
 		int		color;
-		double	floorXWall;
-		double	floorYWall;
-		double	distWall;
+		double	flrXWall;
+		double	flrYWall;
+		double	dstWall;
 		double	distPlr;
-		double	currDist;
+		double	currdist;
 		double	weight;
-		double	currFloorX;
-		double	currFloorY;
+		double	currFlrX;
+		double	currFlrY;
 		int 	floorTexX;
 		int		floorTexY;
-		int		checkBoardPattern;
+		int		chkBoardPatrn;
 		int		floorTexture;
 } t_rc;
 

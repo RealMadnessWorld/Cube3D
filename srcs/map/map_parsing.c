@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarsenio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:39:28 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 17:39:30 by jarsenio         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:54:07 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,9 @@ void	img_dealer(t_data *d, char *str)
 	else if (str[0] == 'E')
 		load_image(d, d->map.ea_img, str, &img);
 	else if (str[0] == 'F')
-		color_saver(d, &d->map.f_color, str);
+		color_saver(d, &d->map.f_clr, str);
 	else if (str[0] == 'C')
-		color_saver(d, &d->map.c_color, str);
+		color_saver(d, &d->map.c_clr, str);
 	else
 		ft_err(d, "Error: Please use a valid identifier (NO,SO,WE,EA,C,F)");
 }

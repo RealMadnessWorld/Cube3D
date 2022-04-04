@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:17:55 by fmeira            #+#    #+#             */
-/*   Updated: 2022/04/04 18:31:19 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/04 19:06:47 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,48 +49,53 @@ void	set_floor(t_rc *rc)
 {
 	if (rc->side == 0 && rc->rayDirX > 0)
 	{
-		rc->floorXWall = rc->mapX;
-		rc->floorYWall = rc->mapY + rc->wallX;
+		rc->flrXWall = rc->mapX;
+		rc->flrYWall = rc->mapY + rc->wallX;
 	}
 	else if (rc->side == 0 && rc->rayDirX < 0)
 	{
-		rc->floorXWall = rc->mapX + 1.0;
-		rc->floorYWall = rc->mapY + rc->wallX;
+		rc->flrXWall = rc->mapX + 1.0;
+		rc->flrYWall = rc->mapY + rc->wallX;
 	}
 	else if (rc->side == 1 && rc->rayDirY > 0)
 	{
-		rc->floorXWall = rc->mapX + rc->wallX;
-		rc->floorYWall = rc->mapY;
+		rc->flrXWall = rc->mapX + rc->wallX;
+		rc->flrYWall = rc->mapY;
 	}
 	else
 	{
-		rc->floorXWall = rc->mapX + rc->wallX;
-		rc->floorYWall = rc->mapY + 1.0;
+		rc->flrXWall = rc->mapX + rc->wallX;
+		rc->flrYWall = rc->mapY + 1.0;
 	}
+}
+
+static int	rgb(int r, int g, int b)
+{
+	return (0 << 24 | r << 16 | g << 8 | b);
 }
 
 void	draw_floor(t_rc *rc, t_data *d, int x)
 {
 	int	y;
+	int	nrm;
 
-	rc->distWall = rc->pWallDst;
+	rc->dstWall = rc->pWallDst;
 	rc->distPlr = 0.0;
 	if (rc->drawEnd < 0)
 		rc->drawEnd = HEIGHT;
 	y = rc->drawEnd + 1;
 	while (y < HEIGHT)
 	{
-		rc->currDist = HEIGHT / (2.0 * y - HEIGHT);
-		rc->weight = (rc->currDist - rc->distPlr) / (rc->distWall - rc->distPlr);
-		rc->currFloorX = rc->weight * rc->floorXWall + (1.0 - rc->weight) * d->posX;
-		rc->currFloorY = rc->weight * rc->floorYWall + (1.0 - rc->weight) * d->posY;
-		rc->floorTexX = (int)(rc->currFloorX * TEXWIDTH) % TEXWIDTH;
-		rc->floorTexY = (int)(rc->currFloorY * TEXHEIGHT) % TEXHEIGHT;
-		rc->checkBoardPattern = ((int)(rc->currFloorX) + (int)(rc->currFloorY)) % 2;
-		//floor
-		d->buf[y][x] = (0 << 24 | d->map.f_color[0] << 16 | d->map.f_color[1] << 8 | d->map.f_color[2]);
-		//ceiling
-		d->buf[HEIGHT - y][x] = (0 << 24 | d->map.c_color[0] << 16 | d->map.c_color[1] << 8 | d->map.c_color[2]);
+		nrm = HEIGHT - y;
+		rc->currdist = HEIGHT / (2.0 * y - HEIGHT);
+		rc->weight = (rc->currdist - rc->distPlr) / (rc->dstWall - rc->distPlr);
+		rc->currFlrX = rc->weight * rc->flrXWall + (1.0 - rc->weight) * d->posX;
+		rc->currFlrY = rc->weight * rc->flrYWall + (1.0 - rc->weight) * d->posY;
+		rc->floorTexX = (int)(rc->currFlrX * TEXWIDTH) % TEXWIDTH;
+		rc->floorTexY = (int)(rc->currFlrY * TEXHEIGHT) % TEXHEIGHT;
+		rc->chkBoardPatrn = ((int)(rc->currFlrX) + (int)(rc->currFlrY)) % 2;
+		d->buf[y][x] = rgb(d->map.f_clr[0], d->map.f_clr[1], d->map.f_clr[2]);
+		d->buf[nrm][x] = rgb(d->map.c_clr[0], d->map.c_clr[1], d->map.c_clr[2]);
 		y++;
 	}
 }

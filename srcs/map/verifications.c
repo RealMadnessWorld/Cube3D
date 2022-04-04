@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verifications.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarsenio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:39:47 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 17:39:49 by jarsenio         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:54:07 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	verify(t_data *d)
 	if ((*d->map.ea_img) == -1 || (*d->map.so_img) == -1
 		|| (*d->map.we_img) == -1 || (*d->map.no_img) == -1)
 		ft_err(d, "Error: Missing texture(s)");
-	else if (!d->map.c_color || !d->map.f_color)
+	else if (!d->map.c_clr || !d->map.f_clr)
 		ft_err(d, "Error: Missing color(s)");
 	else if (!d->map.map)
 		ft_err(d, "Error: Where's the map?");

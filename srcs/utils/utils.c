@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarsenio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:07:31 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 18:07:33 by jarsenio         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:54:07 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	is_empty(char *str)
 
 int	ready_to_map(t_data *d)
 {
-	if (d->map.c_color && d->map.f_color && d->map.ea_img
+	if (d->map.c_clr && d->map.f_clr && d->map.ea_img
 		&& d->map.so_img && d->map.we_img && d->map.no_img)
 		return (1);
 	return (0);
