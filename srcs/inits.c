@@ -82,7 +82,7 @@ void	init_data(t_data *d)
 	d->posY = 0;
 	d->planeX = 0.0;
 	d->planeY = 0.66;
-	d->moveSpeed = 0.03;
+	d->moveSpeed = 0.06;
 	d->rotSpeed = 0.03;
 	d->map.c_color = NULL;
 	d->map.f_color = NULL;

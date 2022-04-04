@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/03/25 18:13:37 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/04 17:07:28 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,11 @@
 *		  Definitions		 *
 \****************************/
 
+# define IS_OS_MAC		1
+
 # define TITLE "principle vagina"
 # define KEYPRESS 2
 # define KEYRELEASE 3
-# define ESC_KEY 65307
-# define KEY_ARR_LEFT 65361
-# define KEY_ARR_RIGHT 65363
-# define W_KEY 119
-# define S_KEY 115
-# define D_KEY 100
-# define A_KEY 97
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_KEY_EXIT 17
 # define texWidth 64
@@ -47,7 +42,25 @@
 # define S_DIR 3.1415907
 # define E_DIR 1.57079
 # define W_DIR -1.57079
-\
+
+# if IS_OS_MAC == 1
+# define ESC_KEY 53
+# define KEY_ARR_LEFT 123
+# define KEY_ARR_RIGHT 124
+# define W_KEY 13
+# define S_KEY 1
+# define D_KEY 2
+# define A_KEY 0
+# else
+# define ESC_KEY 65307
+# define KEY_ARR_LEFT 65361
+# define KEY_ARR_RIGHT 65363
+# define W_KEY 119
+# define S_KEY 115
+# define D_KEY 100
+# define A_KEY 97
+# endif
+
 /****************************\
 *		  Structures		 *
 \****************************/
