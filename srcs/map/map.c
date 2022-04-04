@@ -53,15 +53,72 @@ void	square_map(t_data *d, int width)
 	d->map.map[i] = NULL;
 }
 
+char	*clean_tabs(char *str, int tabs)
+{
+	char	*tmp;
+	int		i;
+	int		j;
+	int		x;
+
+	tmp =(char *)ft_calloc(((ft_strlen(str) + (tabs * 3)) + 1), sizeof(char));
+	i = -1;
+	j = 0;
+	if (!tmp)
+		return (NULL);
+	while (str[++i])
+	{
+		if (str[i] == '\t')
+		{
+			x = 0;
+			while (x < 4)
+				tmp[(i + (3 * j)) + x++] = ' ';
+			j++;
+		}
+		else
+			tmp[i + (3 * j)] = str[i];
+	}
+	return (tmp);
+}
+
+char	*fix_tabs(char *str, int *ref)
+{
+	int		i;
+	char	*new;
+	int		tab;
+
+	i = -1;
+	tab = 0;
+	new = str;
+	if (!str)
+		return (NULL);
+	while (str[++i])
+	{
+		if (str[i] == '\t')
+			tab++;
+	}
+	if (tab)
+	{
+		*ref = 1;
+		new = clean_tabs(str, tab);
+	}
+	return (new);
+}
+
 void	map_dealer(t_data *d, char *str)
 {
+	int	tabs;
+
+	tabs = 0;
 	if (is_empty(str))
 		return ;
 	if (!check_chars(str, "	 10NEWS"))
 		ft_err(d, "Error: Weird symbol in the map...\n");
+	str = fix_tabs(str, &tabs);
 	if ((int)ft_strlen(str) > d->map.width)
 		d->map.width = (int)ft_strlen(str);
 	d->map.height += 1;
 	start_map(d);
 	d->map.map[d->map.height - 1] = ft_strdup(str);
+	if (tabs)
+		free(str);
 }

@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 20:13:15 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/03/29 01:44:45 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/04 16:02:16 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(const char *string)
 	int		i;
 
 	i = 0;
-	ptr = (char *)malloc(sizeof(*string) * (ft_strlen(string) + 1));
+	ptr = (char *)malloc(sizeof(char) * (ft_strlen(string) + 1));
 	if (!ptr)
 		return (NULL);
 	while (string[i] != '\0')
