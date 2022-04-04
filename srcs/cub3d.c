@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 19:53:20 by yohlee            #+#    #+#             */
-/*   Updated: 2022/03/27 23:51:49 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/04 17:35:13 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	finish(t_data *d)
 	return (1);
 }
 
-static void draw(t_data *d)
+static void	draw(t_data *d)
 {
 	int	y;
 	int	x;
@@ -40,7 +40,7 @@ static void draw(t_data *d)
 	mlx_put_image_to_window(d->mlx, d->win, d->img.img, 0, 0);
 }
 
-int main_loop(t_data *d)
+int	main_loop(t_data *d)
 {
 	calculate(d);
 	draw(d);
@@ -48,7 +48,7 @@ int main_loop(t_data *d)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_data	d;
 	int		i;
@@ -58,12 +58,11 @@ int main(int argc, char **argv)
 		ft_error("Error: I need a map. And one map only!\n");
 	init_data(&d);
 	create_map(argv[1], &d);
-	// print_map_shit(&d);
 	while (i < HEIGHT)
 		ft_bzero(d.buf[i++], WIDTH);
 	mlx_loop_hook(d.mlx, &main_loop, &d);
-	mlx_hook(d.win, X_EVENT_KEY_PRESS, 1L<<0, &key_press, &d);
-	mlx_hook(d.win, KEYRELEASE, 1L<<1, &key_release, &d);
+	mlx_hook(d.win, X_EVENT_KEY_PRESS, 1L << 0, &key_press, &d);
+	mlx_hook(d.win, KEYRELEASE, 1L << 1, &key_release, &d);
 	mlx_hook(d.win, 17, 1L << 17, &finish, &d);
 	mlx_loop(d.mlx);
 	printf("not seg fault yet\n");

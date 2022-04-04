@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 17:07:28 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/04 18:27:51 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,10 @@ typedef struct s_img
 	void	*img;
 	int		*data;
 	int		size_l;
-	int		bpp;
-	int		endian;
-	int		img_width;
-	int		img_height;
+	int		b;
+	int		e;
+	int		img_w;
+	int		img_h;
 } t_img;
 
 typedef struct s_rc
@@ -118,7 +118,7 @@ typedef struct s_rc
 		double	sideDistY;
 		double	deltaDistX;
 		double	deltaDistY;
-		double	perpWallDist;
+		double	pWallDst;
 		int		stepX;
 		int		stepY;
 		int		hit;
@@ -135,14 +135,14 @@ typedef struct s_rc
 		double	floorXWall;
 		double	floorYWall;
 		double	distWall;
-		double	distPlayer;
-		double	currentDist;
+		double	distPlr;
+		double	currDist;
 		double	weight;
-		double	currentFloorX;
-		double	currentFloorY;
+		double	currFloorX;
+		double	currFloorY;
 		int 	floorTexX;
 		int		floorTexY;
-		int		checkerBoardPattern;
+		int		checkBoardPattern;
 		int		floorTexture;
 } t_rc;
 

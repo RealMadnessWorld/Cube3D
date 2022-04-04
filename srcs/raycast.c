@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycast.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/04 18:15:27 by fmeira            #+#    #+#             */
+/*   Updated: 2022/04/04 18:17:42 by fmeira           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
-static void cast_rays(t_rc *rc, t_data *d)
+static void	cast_rays(t_rc *rc, t_data *d)
 {
 	if (rc->rayDirX < 0)
 	{
@@ -42,17 +54,16 @@ static void	calc_distance(t_rc *rc, t_data *d)
 		}
 		if (d->mapito[rc->mapX][rc->mapY] > 0)
 			rc->hit = 1;
-
 	}
 	if (rc->side == 0)
-		rc->perpWallDist = (rc->mapX - d->posX + (1 - rc->stepX) / 2) / rc->rayDirX;
+		rc->pWallDst = (rc->mapX - d->posX + (1 - rc->stepX) / 2) / rc->rayDirX;
 	else
-		rc->perpWallDist = (rc->mapY - d->posY + (1 - rc->stepY) / 2) / rc->rayDirY;
+		rc->pWallDst = (rc->mapY - d->posY + (1 - rc->stepY) / 2) / rc->rayDirY;
 }
 
-static void calc_height(t_rc *rc, t_data *d)
+static void	calc_height(t_rc *rc, t_data *d)
 {
-	rc->lineHeight = (int)(HEIGHT / rc->perpWallDist);
+	rc->lineHeight = (int)(HEIGHT / rc->pWallDst);
 	rc->drawStart = -rc->lineHeight / 2 + HEIGHT / 2;
 	if (rc->drawStart < 0)
 		rc->drawStart = 0;
@@ -60,9 +71,9 @@ static void calc_height(t_rc *rc, t_data *d)
 	if (rc->drawEnd >= HEIGHT)
 		rc->drawEnd = HEIGHT - 1;
 	if (rc->side == 0)
-		rc->wallX = d->posY + rc->perpWallDist * rc->rayDirY;
+		rc->wallX = d->posY + rc->pWallDst * rc->rayDirY;
 	else
-		rc->wallX = d->posX + rc->perpWallDist * rc->rayDirX;
+		rc->wallX = d->posX + rc->pWallDst * rc->rayDirX;
 	rc->wallX -= floor(rc->wallX);
 	rc->texX = (int)(rc->wallX * (double)texWidth);
 	if (rc->side == 0 && rc->rayDirX > 0)
@@ -73,7 +84,7 @@ static void calc_height(t_rc *rc, t_data *d)
 	rc->texPos = (rc->drawStart - HEIGHT / 2 + rc->lineHeight / 2) * rc->step;
 }
 
-static void init_rc_vars(t_rc *rc, int x, t_data *d)
+static void	init_rc_vars(t_rc *rc, int x, t_data *d)
 {
 	rc->cameraX = 2 * x / (double)WIDTH - 1;
 	rc->rayDirX = d->dirX + d->planeX * rc->cameraX;
@@ -85,7 +96,7 @@ static void init_rc_vars(t_rc *rc, int x, t_data *d)
 	rc->hit = 0;
 }
 
-void calculate(t_data *d)
+void	calculate(t_data *d)
 {
 	int		x;
 	t_rc	rc;
@@ -95,7 +106,7 @@ void calculate(t_data *d)
 	{
 		init_rc_vars(&rc, x, d);
 		cast_rays(&rc, d);
-		calc_distance(&rc,d);
+		calc_distance(&rc, d);
 		calc_height(&rc, d);
 		draw_walls(&rc, d, x);
 		set_floor(&rc);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   textures.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/04 18:17:55 by fmeira            #+#    #+#             */
+/*   Updated: 2022/04/04 18:27:51 by fmeira           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 static void	set_color(t_data *d, t_rc *rc)
@@ -17,9 +29,10 @@ static void	set_color(t_data *d, t_rc *rc)
 			rc->color = d->map.ea_img[texHeight * rc->texY + rc->texX];
 	}
 }
+
 void	draw_walls(t_rc *rc, t_data *d, int x)
 {
-	int y;
+	int	y;
 
 	y = rc->drawStart;
 	while (y < rc->drawEnd)
@@ -60,20 +73,20 @@ void	draw_floor(t_rc *rc, t_data *d, int x)
 {
 	int	y;
 
-	rc->distWall = rc->perpWallDist;
-	rc->distPlayer = 0.0;
+	rc->distWall = rc->pWallDst;
+	rc->distPlr = 0.0;
 	if (rc->drawEnd < 0)
 		rc->drawEnd = HEIGHT;
 	y = rc->drawEnd + 1;
 	while (y < HEIGHT)
 	{
-		rc->currentDist = HEIGHT / (2.0 * y - HEIGHT);
-		rc->weight = (rc->currentDist - rc->distPlayer) / (rc->distWall - rc->distPlayer);
-		rc->currentFloorX = rc->weight * rc->floorXWall + (1.0 - rc->weight) * d->posX;
-		rc->currentFloorY = rc->weight * rc->floorYWall + (1.0 - rc->weight) * d->posY;
-		rc->floorTexX = (int)(rc->currentFloorX * texWidth) % texWidth;
-		rc->floorTexY = (int)(rc->currentFloorY * texHeight) % texHeight;
-		rc->checkerBoardPattern = ((int)(rc->currentFloorX) + (int)(rc->currentFloorY)) % 2;
+		rc->currDist = HEIGHT / (2.0 * y - HEIGHT);
+		rc->weight = (rc->currDist - rc->distPlr) / (rc->distWall - rc->distPlr);
+		rc->currFloorX = rc->weight * rc->floorXWall + (1.0 - rc->weight) * d->posX;
+		rc->currFloorY = rc->weight * rc->floorYWall + (1.0 - rc->weight) * d->posY;
+		rc->floorTexX = (int)(rc->currFloorX * texWidth) % texWidth;
+		rc->floorTexY = (int)(rc->currFloorY * texHeight) % texHeight;
+		rc->checkBoardPattern = ((int)(rc->currFloorX) + (int)(rc->currFloorY)) % 2;
 		//floor
 		d->buf[y][x] = (0 << 24 | d->map.f_color[0] << 16 | d->map.f_color[1] << 8 | d->map.f_color[2]);
 		//ceiling
