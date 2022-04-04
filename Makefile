@@ -1,4 +1,4 @@
-NAME	= cube3D
+NAME	= cub3D
 OS		= $(shell uname)
 
 MAKEFLAGS	+= -s

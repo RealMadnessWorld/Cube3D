@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 18:54:07 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/04 21:30:08 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ typedef struct s_keys
 	int	key_esc;
 	int	key_right;
 	int	key_left;
-}	t_keys;
+} t_keys;
 
 typedef struct	s_map
 {
@@ -94,7 +94,7 @@ typedef struct	s_map
 	int		mini_tilesize;
 	int		mini_width;
 	int		mini_height;
-}				t_map;
+} t_map;
 
 typedef struct s_img
 {
