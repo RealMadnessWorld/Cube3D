@@ -150,6 +150,7 @@ typedef struct s_data
 	double	moveSpeed;
 	double	rotSpeed;
 	int		**mapito;
+	int		empty;
 } t_data;
 
 /****************************\
@@ -194,6 +195,7 @@ int		is_empty(char *str);
 void	ft_err(t_data *d, char *error);
 char	*check_img_path(char *path, t_data *d);
 void	ft_be_minus_one(void *str, size_t len);
+void	free_map(t_data *d);
 
 /*
 ** Movement

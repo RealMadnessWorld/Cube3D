@@ -6,19 +6,19 @@ void	free_map(t_data *d)
 
 	i = 0;
 	if (d->map.map)
-		{
-			while (i < d->map.height)
-				free(d->map.map[i++]);
-			free(d->map.map);
-		}
-		if (d->map.c_color)
-			free(d->map.c_color);
-		if (d->map.f_color)
-			free(d->map.f_color);
+	{
+		while (i < d->map.height)
+			free(d->map.map[i++]);
+		free(d->map.map);
+	}
 }
 
 void	be_free(t_data *d)
 {
+		if (d->map.c_color)
+			free(d->map.c_color);
+		if (d->map.f_color)
+			free(d->map.f_color);
 		if (d->map.no_img)
 			free(d->map.no_img);
 		if (d->map.so_img)
