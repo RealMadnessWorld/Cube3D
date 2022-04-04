@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movement.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/04 18:14:05 by fmeira            #+#    #+#             */
+/*   Updated: 2022/04/04 18:15:13 by fmeira           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
-static void move(int direction, t_data *d)
+static void	move(int direction, t_data *d)
 {
 	if (direction == 1)
 	{
@@ -18,26 +30,26 @@ static void move(int direction, t_data *d)
 	}
 }
 
-void rotate(int direction, t_data *d, double rotSpeed)
+void	rotate(int direction, t_data *d, double rotSpeed)
 {
-	double	oldDirX;
-	double	oldPlaneX;
+	double	old_dir_x;
+	double	old_plane_x;
 
-	oldDirX = d->dirX;
-	oldPlaneX = d->planeX;
+	old_dir_x = d->dirX;
+	old_plane_x = d->planeX;
 	if (direction == 1)
 	{
 		d->dirX = d->dirX * cos(-rotSpeed) - d->dirY * sin(-rotSpeed);
-		d->dirY = oldDirX * sin(-rotSpeed) + d->dirY * cos(-rotSpeed);
+		d->dirY = old_dir_x * sin(-rotSpeed) + d->dirY * cos(-rotSpeed);
 		d->planeX = d->planeX * cos(-rotSpeed) - d->planeY * sin(-rotSpeed);
-		d->planeY = oldPlaneX * sin(-rotSpeed) + d->planeY * cos(-rotSpeed);
+		d->planeY = old_plane_x * sin(-rotSpeed) + d->planeY * cos(-rotSpeed);
 	}
 	else if (direction == -1)
 	{
 		d->dirX = d->dirX * cos(rotSpeed) - d->dirY * sin(rotSpeed);
-		d->dirY = oldDirX * sin(rotSpeed) + d->dirY * cos(rotSpeed);
+		d->dirY = old_dir_x * sin(rotSpeed) + d->dirY * cos(rotSpeed);
 		d->planeX = d->planeX * cos(rotSpeed) - d->planeY * sin(rotSpeed);
-		d->planeY = oldPlaneX * sin(rotSpeed) + d->planeY * cos(rotSpeed);
+		d->planeY = old_plane_x * sin(rotSpeed) + d->planeY * cos(rotSpeed);
 	}
 }
 
@@ -79,7 +91,7 @@ int	key_press(int key, t_data *d)
 	return (0);
 }
 
-int key_hook(t_data *d)
+int	key_hook(t_data *d)
 {
 	if (d->keys.key_w)
 		move(1, d);

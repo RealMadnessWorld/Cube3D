@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/04 18:07:31 by jarsenio          #+#    #+#             */
+/*   Updated: 2022/04/04 18:54:07 by fmeira           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	is_char(char c, char *str)
@@ -30,9 +42,8 @@ int	is_empty(char *str)
 
 int	ready_to_map(t_data *d)
 {
-	if (d->map.c_color && d->map.f_color && d->map.ea_img &&
-	d->map.so_img && d->map.we_img && d->map.no_img)
-
+	if (d->map.c_clr && d->map.f_clr && d->map.ea_img
+		&& d->map.so_img && d->map.we_img && d->map.no_img)
 		return (1);
 	return (0);
 }
@@ -46,4 +57,11 @@ void	ft_be_minus_one(void *str, size_t len)
 	tmp = str;
 	while (i < len)
 		tmp[i++] = -1;
+}
+
+int	ret_error(char **map, int x, int y)
+{
+	if (!is_char(map[y][x], "10NSEW"))
+		return (0);
+	return (1);
 }

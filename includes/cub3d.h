@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 21:08:34 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/04 21:09:52 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@
 # define KEYRELEASE 3
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_KEY_EXIT 17
-# define texWidth 64
-# define texHeight 64
-# define mapWidth 24
-# define mapHeight 24
+# define TEXWIDTH 64
+# define TEXHEIGHT 64
+# define MAPWIDTH 24
+# define MAPHEIGHT 24
 # define WIDTH 1000
 # define HEIGHT 600
 # define S_DIR 3.1415907
@@ -44,21 +44,21 @@
 # define W_DIR -1.57079
 
 # if IS_OS_MAC == 1
-# define ESC_KEY 53
-# define KEY_ARR_LEFT 123
-# define KEY_ARR_RIGHT 124
-# define W_KEY 13
-# define S_KEY 1
-# define D_KEY 2
-# define A_KEY 0
+#  define ESC_KEY 53
+#  define KEY_ARR_LEFT 123
+#  define KEY_ARR_RIGHT 124
+#  define W_KEY 13
+#  define S_KEY 1
+#  define D_KEY 2
+#  define A_KEY 0
 # else
-# define ESC_KEY 65307
-# define KEY_ARR_LEFT 65361
-# define KEY_ARR_RIGHT 65363
-# define W_KEY 119
-# define S_KEY 115
-# define D_KEY 100
-# define A_KEY 97
+#  define ESC_KEY 65307
+#  define KEY_ARR_LEFT 65361
+#  define KEY_ARR_RIGHT 65363
+#  define W_KEY 119
+#  define S_KEY 115
+#  define D_KEY 100
+#  define A_KEY 97
 # endif
 
 /****************************\
@@ -83,8 +83,8 @@ typedef struct	s_map
 	int		*so_img;
 	int		*we_img;
 	int		*ea_img;
-	int		*f_color;
-	int		*c_color;
+	int		*f_clr;
+	int		*c_clr;
 	int		width;
 	int		height;
 	int		play_x;
@@ -101,10 +101,10 @@ typedef struct s_img
 	void	*img;
 	int		*data;
 	int		size_l;
-	int		bpp;
-	int		endian;
-	int		img_width;
-	int		img_height;
+	int		b;
+	int		e;
+	int		img_w;
+	int		img_h;
 } t_img;
 
 typedef struct s_rc
@@ -118,7 +118,7 @@ typedef struct s_rc
 		double	sideDistY;
 		double	deltaDistX;
 		double	deltaDistY;
-		double	perpWallDist;
+		double	pWallDst;
 		int		stepX;
 		int		stepY;
 		int		hit;
@@ -132,17 +132,17 @@ typedef struct s_rc
 		double	texPos;
 		int		texY;
 		int		color;
-		double	floorXWall;
-		double	floorYWall;
-		double	distWall;
-		double	distPlayer;
-		double	currentDist;
+		double	flrXWall;
+		double	flrYWall;
+		double	dstWall;
+		double	distPlr;
+		double	currdist;
 		double	weight;
-		double	currentFloorX;
-		double	currentFloorY;
+		double	currFlrX;
+		double	currFlrY;
 		int 	floorTexX;
 		int		floorTexY;
-		int		checkerBoardPattern;
+		int		chkBoardPatrn;
 		int		floorTexture;
 } t_rc;
 
@@ -178,6 +178,8 @@ void	create_map(char	*map, t_data *d);
 void	map_dealer(t_data *d, char *str);
 void	square_map(t_data *d, int	width);
 void	draw_minimap(t_data *d);
+char	*fix_tabs(char *str, int *ref);
+void	start_map(t_data *d);
 
 /*
 ** Inits
@@ -209,6 +211,7 @@ void	ft_err(t_data *d, char *error);
 char	*check_img_path(char *path, t_data *d);
 void	ft_be_minus_one(void *str, size_t len);
 void	free_map(t_data *d);
+int		ret_error(char **map, int x, int y);
 
 /*
 ** Movement
@@ -231,11 +234,5 @@ void	draw_walls(t_rc *rc, t_data *data, int x);
 */
 
 int		finish(t_data *data);
-
-/*
-** DEBBUGING
-*/
-
-void	print_map_shit(t_data *d);
 
 #endif

@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/04 18:10:47 by fmeira            #+#    #+#             */
+/*   Updated: 2022/04/04 18:13:35 by fmeira           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 static void	draw_rectangle(t_data *d, int x, int y, int color)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	x *= d->map.mini_tilesize;
 	y *= d->map.mini_tilesize;
@@ -23,20 +35,21 @@ static void	draw_rectangle(t_data *d, int x, int y, int color)
 	}
 }
 
-int	is_circle(double i, double j, double x, double y, double radius)
+int	is_circle(double i, double j, double x, double y)
 {
-	double dist;
+	double	dist;
+	double	radius;
 
 	dist = sqrt(powf(j - x, 2.) + powf(i - y, 2.));
+	radius = 2;
 	if (dist <= radius)
 		return (1);
 	return (0);
 }
 
-static void	draw_player(t_data *d, double x, double y)
+static void	draw_plr(t_data *d, double x, double y)
 {
-	double radius = 2;
-	double 	i;
+	double	i;
 	double	j;
 
 	i = 0;
@@ -45,7 +58,7 @@ static void	draw_player(t_data *d, double x, double y)
 		j = 0;
 		while (j < d->map.mini_width)
 		{
-			if (is_circle(i, j, x, y, radius))
+			if (is_circle(i, j, x, y))
 				d->img.data[(int)i * WIDTH + (int)j] = 0xFFFF00;
 			j++;
 		}
@@ -72,5 +85,5 @@ void	draw_minimap(t_data *d)
 		}
 		i++;
 	}
-	draw_player(d, d->posY * d->map.mini_tilesize, d->posX * d->map.mini_tilesize);
+	draw_plr(d, d->posY * d->map.mini_tilesize, d->posX * d->map.mini_tilesize);
 }
