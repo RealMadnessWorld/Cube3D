@@ -6,41 +6,20 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:39:47 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/05 17:28:21 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/04 22:45:59 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static int	all_ones(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i++])
-	{
-		if (str[i] != '1' || str[i] != ' ')
-			return (0);
-	}
-	return (1);
-}
-
 int	zero_surr(char **map, int x, int y)
 {
 	if (is_char(map[y][x], "0NSEW"))
 	{
-		if (y != 0 && map[y - 1])
-			return (ret_error(map, x, y - 1));
-		else if (!all_ones(map[y]))
+		if (!verify_top(map, x, y))
 			return (0);
-		if (map[y + 1])
-			return (ret_error(map, x, y + 1));
-		else if (!all_ones(map[y]))
+		if (!verify_sides(map, x, y))
 			return (0);
-		if (x != 0 && map[y][x - 1])
-			return (ret_error(map, x - 1, y));
-		if (map[y][x + 1])
-			return (ret_error(map, x + 1, y));
 	}
 	return (1);
 }

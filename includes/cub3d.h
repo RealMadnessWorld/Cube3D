@@ -198,6 +198,8 @@ int		check_chars(char *str, char *chars);
 void	map_closed(t_data *d, char **map);
 void	convert_map(t_data *d);
 int		check_texture_identifier(t_data *data, char *path);
+int		verify_top(char **map, int x, int y);
+int		verify_sides(char **map, int x, int y);
 
 /*
 ** Utils
