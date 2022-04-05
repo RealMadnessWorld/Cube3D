@@ -76,7 +76,7 @@ typedef struct s_keys
 	int	key_left;
 }	t_keys;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char	**map;
 	int		*no_img;
