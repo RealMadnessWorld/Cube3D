@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:39:07 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 22:31:22 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/05 16:34:53 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	set_player(t_data *d, int y, int x, char c)
 {
-	d->posX = (double)x + 0.5;
-	d->posY = (double)y + 0.5;
+	d->posx = (double)x + 0.5;
+	d->posy = (double)y + 0.5;
 	if (c == 'S')
 		rotate(1, d, S_DIR);
 	else if (c == 'E')
@@ -26,7 +26,7 @@ void	set_player(t_data *d, int y, int x, char c)
 
 static void	p_pos_err(t_data *d, int y, int x, int **newmap)
 {
-	if (d->posX && d->posY)
+	if (d->posx && d->posy)
 		ft_err(d, "this is a single player game. ONE starting position");
 	set_player(d, y, x, d->map.map[x][y]);
 	newmap[x][y] = 0;
@@ -56,7 +56,7 @@ void	convert_map(t_data *d)
 		}
 		x++;
 	}
-	if (!d->posX || !d->posY)
+	if (!d->posx || !d->posy)
 		ft_err(d, "Error: Missing player starting point");
 	d->mapito = newmap;
 }

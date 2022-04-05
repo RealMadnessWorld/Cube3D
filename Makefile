@@ -4,7 +4,7 @@ OS		= $(shell uname)
 MAKEFLAGS	+= -s
 
 CC		= gcc
-FLAGS	= -Wall -Werror -Wextra -g #-fsanitize=address
+FLAGS	= -Wall -Werror -Wextra -g -fsanitize=address
 RM		= rm -rf
 
 # directories

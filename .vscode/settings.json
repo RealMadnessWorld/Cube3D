@@ -3,5 +3,6 @@
 		"stdio.h": "c",
 		"stdlib.h": "c",
 		"cub3d.h": "c"
-	}
+	},
+	"cmake.configureOnOpen": true
 }

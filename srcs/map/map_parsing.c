@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:39:28 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 22:39:50 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/05 16:16:03 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 int	is_image(t_data *d, char *str)
 {
-	if (str[0] == 'N' && check_texture_identifier(d, str))
-		return (1);
-	else if (str[0] == 'S' && check_texture_identifier(d, str))
-		return (1);
-	else if (str[0] == 'W' && check_texture_identifier(d, str))
-		return (1);
-	else if (str[0] == 'E' && check_texture_identifier(d, str))
+	if (d->map.map)
+		printf("noooo\n");
+	if ((str[0] == 'N' || str[0] == 'S' || str[0] == 'E' || str[0] == 'W')
+		&& check_texture_identifier(d, str))
 		return (1);
 	else if (str[0] == 'C')
 	{
@@ -36,10 +33,7 @@ int	is_image(t_data *d, char *str)
 	}
 	else if (str[0] != '1' && str[0] != '0' && str[0] != 32
 		&& str[0] != 9 && str[0] != 10 && str[0] != 0)
-		{
-		printf("%d\n", str[0]);
 		ft_err(d, "Error: Invalid data/file provided");
-		}
 	return (0);
 }
 

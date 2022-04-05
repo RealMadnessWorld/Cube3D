@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:10:47 by fmeira            #+#    #+#             */
-/*   Updated: 2022/04/04 18:13:35 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/05 16:34:53 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ void	draw_minimap(t_data *d)
 		}
 		i++;
 	}
-	draw_plr(d, d->posY * d->map.mini_tilesize, d->posX * d->map.mini_tilesize);
+	draw_plr(d, d->posy * d->map.mini_tilesize, d->posx * d->map.mini_tilesize);
 }

@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:17:55 by fmeira            #+#    #+#             */
-/*   Updated: 2022/04/04 19:06:47 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/05 16:35:11 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ static void	set_color(t_data *d, t_rc *rc)
 {
 	if (rc->side == 0)
 	{
-		if (d->posX > rc->mapX)
-			rc->color = d->map.no_img[TEXHEIGHT * rc->texY + rc->texX];
+		if (d->posx > rc->mapx)
+			rc->color = d->map.no_img[TEXHEIGHT * rc->texy + rc->texx];
 		else
-			rc->color = d->map.so_img[TEXHEIGHT * rc->texY + rc->texX];
+			rc->color = d->map.so_img[TEXHEIGHT * rc->texy + rc->texx];
 	}
 	else
 	{
-		if (d->posY > rc->mapY)
-			rc->color = d->map.we_img[TEXHEIGHT * rc->texY + rc->texX];
+		if (d->posy > rc->mapy)
+			rc->color = d->map.we_img[TEXHEIGHT * rc->texy + rc->texx];
 		else
-			rc->color = d->map.ea_img[TEXHEIGHT * rc->texY + rc->texX];
+			rc->color = d->map.ea_img[TEXHEIGHT * rc->texy + rc->texx];
 	}
 }
 
@@ -34,11 +34,11 @@ void	draw_walls(t_rc *rc, t_data *d, int x)
 {
 	int	y;
 
-	y = rc->drawStart;
-	while (y < rc->drawEnd)
+	y = rc->drawstart;
+	while (y < rc->drawend)
 	{
-		rc->texY = (int)rc->texPos & (TEXHEIGHT - 1);
-		rc->texPos += rc->step;
+		rc->texy = (int)rc->texpos & (TEXHEIGHT - 1);
+		rc->texpos += rc->step;
 		set_color(d, rc);
 		d->buf[y][x] = rc->color;
 		y++;
@@ -47,25 +47,25 @@ void	draw_walls(t_rc *rc, t_data *d, int x)
 
 void	set_floor(t_rc *rc)
 {
-	if (rc->side == 0 && rc->rayDirX > 0)
+	if (rc->side == 0 && rc->raydirx > 0)
 	{
-		rc->flrXWall = rc->mapX;
-		rc->flrYWall = rc->mapY + rc->wallX;
+		rc->flrxwall = rc->mapx;
+		rc->flrywall = rc->mapy + rc->wallx;
 	}
-	else if (rc->side == 0 && rc->rayDirX < 0)
+	else if (rc->side == 0 && rc->raydirx < 0)
 	{
-		rc->flrXWall = rc->mapX + 1.0;
-		rc->flrYWall = rc->mapY + rc->wallX;
+		rc->flrxwall = rc->mapx + 1.0;
+		rc->flrywall = rc->mapy + rc->wallx;
 	}
-	else if (rc->side == 1 && rc->rayDirY > 0)
+	else if (rc->side == 1 && rc->raydiry > 0)
 	{
-		rc->flrXWall = rc->mapX + rc->wallX;
-		rc->flrYWall = rc->mapY;
+		rc->flrxwall = rc->mapx + rc->wallx;
+		rc->flrywall = rc->mapy;
 	}
 	else
 	{
-		rc->flrXWall = rc->mapX + rc->wallX;
-		rc->flrYWall = rc->mapY + 1.0;
+		rc->flrxwall = rc->mapx + rc->wallx;
+		rc->flrywall = rc->mapy + 1.0;
 	}
 }
 
@@ -79,21 +79,21 @@ void	draw_floor(t_rc *rc, t_data *d, int x)
 	int	y;
 	int	nrm;
 
-	rc->dstWall = rc->pWallDst;
-	rc->distPlr = 0.0;
-	if (rc->drawEnd < 0)
-		rc->drawEnd = HEIGHT;
-	y = rc->drawEnd + 1;
+	rc->dstwall = rc->pwalldst;
+	rc->distplr = 0.0;
+	if (rc->drawend < 0)
+		rc->drawend = HEIGHT;
+	y = rc->drawend + 1;
 	while (y < HEIGHT)
 	{
 		nrm = HEIGHT - y;
 		rc->currdist = HEIGHT / (2.0 * y - HEIGHT);
-		rc->weight = (rc->currdist - rc->distPlr) / (rc->dstWall - rc->distPlr);
-		rc->currFlrX = rc->weight * rc->flrXWall + (1.0 - rc->weight) * d->posX;
-		rc->currFlrY = rc->weight * rc->flrYWall + (1.0 - rc->weight) * d->posY;
-		rc->floorTexX = (int)(rc->currFlrX * TEXWIDTH) % TEXWIDTH;
-		rc->floorTexY = (int)(rc->currFlrY * TEXHEIGHT) % TEXHEIGHT;
-		rc->chkBoardPatrn = ((int)(rc->currFlrX) + (int)(rc->currFlrY)) % 2;
+		rc->weight = (rc->currdist - rc->distplr) / (rc->dstwall - rc->distplr);
+		rc->currflrx = rc->weight * rc->flrxwall + (1.0 - rc->weight) * d->posx;
+		rc->currflry = rc->weight * rc->flrywall + (1.0 - rc->weight) * d->posy;
+		rc->floortexx = (int)(rc->currflrx * TEXWIDTH) % TEXWIDTH;
+		rc->floortexy = (int)(rc->currflry * TEXHEIGHT) % TEXHEIGHT;
+		rc->chkboardpatrn = ((int)(rc->currflrx) + (int)(rc->currflry)) % 2;
 		d->buf[y][x] = rgb(d->map.f_clr[0], d->map.f_clr[1], d->map.f_clr[2]);
 		d->buf[nrm][x] = rgb(d->map.c_clr[0], d->map.c_clr[1], d->map.c_clr[2]);
 		y++;
