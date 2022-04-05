@@ -24,12 +24,11 @@ void	set_player(t_data *d, int y, int x, char c)
 		rotate(1, d, W_DIR);
 }
 
-static void	p_pos_err(t_data *d, int y, int x, int **newmap)
+static void	p_pos_err(t_data *d, int y, int x)
 {
 	if (d->posx && d->posy)
 		ft_err(d, "this is a single player game. ONE starting position");
 	set_player(d, y, x, d->map.map[x][y]);
-	newmap[x][y] = 0;
 }
 
 void	convert_map(t_data *d)
@@ -39,25 +38,24 @@ void	convert_map(t_data *d)
 	int	y;
 
 	newmap = (int **)malloc(sizeof(int *) * d->map.height);
-	x = 0;
-	while (d->map.map[x])
+	x = -1;
+	while (d->map.map[++x])
 	{
 		newmap[x] = (int *)malloc(sizeof(int) * d->map.width);
-		y = 0;
-		while (d->map.map[x][y])
+		y = -1;
+		while (d->map.map[x][++y])
 		{
 			if (is_char(d->map.map[x][y], " "))
 				newmap[x][y] = 9;
 			else if (is_char(d->map.map[x][y], "NSWE"))
-				p_pos_err(d, y, x, newmap);
+			{
+				p_pos_err(d, y, x);
+				newmap[x][y] = 0;
+			}
 			else
 				newmap[x][y] = d->map.map[x][y] - '0';
-			y++;
 		}
-		x++;
 	}
-	if (!d->posx || !d->posy)
-		ft_err(d, "Error: Missing player starting point");
 	d->mapito = newmap;
 }
 

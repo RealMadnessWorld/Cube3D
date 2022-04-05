@@ -127,6 +127,8 @@ void	create_map(char	*map, t_data *d)
 	square_map(d, d->map.width);
 	map_closed(d, d->map.map);
 	convert_map(d);
+	if (!d->posx || !d->posy)
+		ft_err(d, "Error: Missing player starting point");
 	d->map.mini_tilesize = 320 / (d->map.width + d->map.height);
 	d->map.mini_width = d->map.width * d->map.mini_tilesize;
 	d->map.mini_height = d->map.height * d->map.mini_tilesize;

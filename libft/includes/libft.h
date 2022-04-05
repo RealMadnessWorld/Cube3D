@@ -117,5 +117,4 @@ int		ft_strcmp(char *s1, char *s2);
 char	*ft_strjoin_path(char const *s1, char const *s2, char const *s3);
 int		valid_path(char *path);
 
-
 #endif

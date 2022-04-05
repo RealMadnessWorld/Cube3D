@@ -30,17 +30,17 @@ int	zero_surr(char **map, int x, int y)
 	if (is_char(map[y][x], "0NSEW"))
 	{
 		if (y != 0 && map[y - 1])
-			ret_error(map, x, y - 1);
+			return (ret_error(map, x, y - 1));
 		else if (!all_ones(map[y]))
 			return (0);
 		if (map[y + 1])
-			ret_error(map, x, y + 1);
+			return (ret_error(map, x, y + 1));
 		else if (!all_ones(map[y]))
 			return (0);
 		if (x != 0 && map[y][x - 1])
-			ret_error(map, x - 1, y);
+			return (ret_error(map, x - 1, y));
 		if (map[y][x + 1])
-			ret_error(map, x + 1, y);
+			return (ret_error(map, x + 1, y));
 	}
 	return (1);
 }
