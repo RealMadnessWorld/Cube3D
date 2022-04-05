@@ -1,4 +1,3 @@
-R 100 710
 EA ./textures/    greystone.xpm
 NO ./textures/redbrick.xpm
 SO ./textures/eagle.xpm

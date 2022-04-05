@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 23:10:26 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/05 16:36:14 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,59 +109,59 @@ typedef struct s_img
 
 typedef struct s_rc
 {
-		double	cameraX;
-		double	rayDirX;
-		double	rayDirY;
-		int		mapX;
-		int		mapY;
-		double	sideDistX;
-		double	sideDistY;
-		double	deltaDistX;
-		double	deltaDistY;
-		double	pWallDst;
-		int		stepX;
-		int		stepY;
+		double	camera_x;
+		double	raydirx;
+		double	raydiry;
+		int		mapx;
+		int		mapy;
+		double	sidedistx;
+		double	sidedisty;
+		double	deltadistx;
+		double	deltadisty;
+		double	pwalldst;
+		int		stepx;
+		int		stepy;
 		int		hit;
 		int		side;
-		int		lineHeight;
-		int		drawStart;
-		int		drawEnd;
-		double	wallX;
-		int		texX;
+		int		lineheight;
+		int		drawstart;
+		int		drawend;
+		double	wallx;
+		int		texx;
 		double	step;
-		double	texPos;
-		int		texY;
+		double	texpos;
+		int		texy;
 		int		color;
-		double	flrXWall;
-		double	flrYWall;
-		double	dstWall;
-		double	distPlr;
+		double	flrxwall;
+		double	flrywall;
+		double	dstwall;
+		double	distplr;
 		double	currdist;
 		double	weight;
-		double	currFlrX;
-		double	currFlrY;
-		int 	floorTexX;
-		int		floorTexY;
-		int		chkBoardPatrn;
-		int		floorTexture;
+		double	currflrx;
+		double	currflry;
+		int 	floortexx;
+		int		floortexy;
+		int		chkboardpatrn;
+		int		floortexture;
 } t_rc;
 
 typedef struct s_data
 {
 	t_keys	keys;
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
+	double	planex;
+	double	planey;
 	void	*mlx;
 	void	*win;
 	t_map	map;
 	t_img	img;
 	int		buf[HEIGHT][WIDTH];
-	double	moveSpeed;
-	double	rotSpeed;
+	double	movespeed;
+	double	rotspeed;
 	int		**mapito;
 	int		empty;
 } t_data;
@@ -219,7 +219,7 @@ int		ret_error(char **map, int x, int y);
 int		key_press(int key, t_data *data);
 int		key_release(int key, t_data *data);
 int		key_hook(t_data *data);
-void 	rotate(int direction, t_data *data, double rotSpeed);
+void 	rotate(int direction, t_data *data, double rotspeed);
 
 /*
 ** RayCasting
