@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:39:47 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 22:45:59 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/05 17:28:21 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	zero_surr(char **map, int x, int y)
 {
 	if (is_char(map[y][x], "0NSEW"))
 	{
-		if (y != 0 && map[y - 1])
+		if (map[y - 1])
 			ret_error(map, x, y - 1);
 		else if (!all_ones(map[y]))
 			return (0);
@@ -37,7 +37,7 @@ int	zero_surr(char **map, int x, int y)
 			ret_error(map, x, y + 1);
 		else if (!all_ones(map[y]))
 			return (0);
-		if (x != 0 && map[y][x - 1])
+		if (map[y][x - 1])
 			ret_error(map, x - 1, y);
 		if (map[y][x + 1])
 			ret_error(map, x + 1, y);

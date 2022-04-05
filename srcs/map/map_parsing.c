@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:39:28 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/05 16:16:03 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/05 18:54:20 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	is_image(t_data *d, char *str)
 {
-	if (d->map.map)
-		printf("noooo\n");
 	if ((str[0] == 'N' || str[0] == 'S' || str[0] == 'E' || str[0] == 'W')
 		&& check_texture_identifier(d, str))
 		return (1);
@@ -90,6 +88,8 @@ void	img_dealer(t_data *d, char *str)
 {
 	t_img	img;
 
+	if (d->map.map)
+		ft_err(d, "Error: textures must be initialized before the map");
 	if (str[0] == 'N')
 		load_image(d, d->map.no_img, str, &img);
 	else if (str[0] == 'S')
