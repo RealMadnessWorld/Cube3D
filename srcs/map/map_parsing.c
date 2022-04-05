@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:39:28 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/05 20:50:31 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/05 23:35:36 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	create_map(char	*map, t_data *d)
 	char	*line;
 
 	fd = open(map, O_RDONLY);
-	if (fd == -1)
+	if (fd == -1 || !find_extention(map, ".cub"))
 		ft_err(d, "Error: please provide a valid file");
 	ret = 1;
 	while (ret == 1)
