@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:39:47 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 22:45:59 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/05 20:50:38 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,6 @@ void	verify(t_data *d)
 		ft_err(d, "Error: Missing color(s)");
 	else if (!d->map.map)
 		ft_err(d, "Error: Where's the map?");
+	square_map(d, d->map.width);
+	map_closed(d, d->map.map);
 }

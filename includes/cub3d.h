@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/05 19:02:36 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/05 20:39:24 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,7 @@ char	*check_img_path(char *path, t_data *d);
 void	ft_be_minus_one(void *str, size_t len);
 void	free_map(t_data *d);
 int		ret_error(char **map, int x, int y);
+void	check_invalid_line(char *str, t_data *d);
 
 /*
 ** Movement

@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:39:28 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/05 18:54:20 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/05 20:50:31 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ int	is_image(t_data *d, char *str)
 	}
 	else if (str[0] != '1' && str[0] != '0' && str[0] != 32
 		&& str[0] != 9 && str[0] != 10 && str[0] != 0)
-		ft_err(d, "Error: Invalid data/file provided");
+		ft_err(d, "Error: Invalid data found in file");
+	else if (str[0] == ' ' || str[0] == '\t' || !d->map.map)
+		check_invalid_line(str, d);
 	return (0);
 }
 
@@ -113,6 +115,8 @@ void	create_map(char	*map, t_data *d)
 	char	*line;
 
 	fd = open(map, O_RDONLY);
+	if (fd == -1)
+		ft_err(d, "Error: please provide a valid file");
 	ret = 1;
 	while (ret == 1)
 	{
@@ -124,8 +128,6 @@ void	create_map(char	*map, t_data *d)
 		free(line);
 	}
 	verify(d);
-	square_map(d, d->map.width);
-	map_closed(d, d->map.map);
 	convert_map(d);
 	if (!d->posx || !d->posy)
 		ft_err(d, "Error: Missing player starting point");
