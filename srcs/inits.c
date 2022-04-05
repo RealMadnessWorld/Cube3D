@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:37:06 by fmeira            #+#    #+#             */
-/*   Updated: 2022/04/05 16:36:12 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/05 18:52:48 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	load_image(t_data *d, int *texture, char *path, t_img *img)
 	char	*newpath;
 	char	*(*norm)(void *, int *, int *, int *);
 
+	if (texture[0] != -1)
+		ft_err(d, "Error: texture initialized more than once");
 	norm = &mlx_get_data_addr;
 	y = 0;
 	newpath = get_path(d, path);
@@ -64,12 +66,9 @@ void	load_image(t_data *d, int *texture, char *path, t_img *img)
 	img->data = (int *)(*norm)(img->img, &img->b, &img->size_l, &img->e);
 	while (y < img->img_h)
 	{
-		x = 0;
-		while (x < img->img_w)
-		{
+		x = -1;
+		while (++x < img->img_w)
 			texture[img->img_w * y + x] = img->data[img->img_w * y + x];
-			x++;
-		}
 		y++;
 	}
 	mlx_destroy_image(d->mlx, img->img);

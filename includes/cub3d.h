@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:48 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/05 16:36:14 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/05 19:02:36 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ typedef struct s_keys
 	int	key_esc;
 	int	key_right;
 	int	key_left;
-} t_keys;
+}	t_keys;
 
 typedef struct s_map
 {
@@ -94,7 +94,7 @@ typedef struct s_map
 	int		mini_tilesize;
 	int		mini_width;
 	int		mini_height;
-} t_map;
+}	t_map;
 
 typedef struct s_img
 {
@@ -105,46 +105,46 @@ typedef struct s_img
 	int		e;
 	int		img_w;
 	int		img_h;
-} t_img;
+}	t_img;
 
 typedef struct s_rc
 {
-		double	camera_x;
-		double	raydirx;
-		double	raydiry;
-		int		mapx;
-		int		mapy;
-		double	sidedistx;
-		double	sidedisty;
-		double	deltadistx;
-		double	deltadisty;
-		double	pwalldst;
-		int		stepx;
-		int		stepy;
-		int		hit;
-		int		side;
-		int		lineheight;
-		int		drawstart;
-		int		drawend;
-		double	wallx;
-		int		texx;
-		double	step;
-		double	texpos;
-		int		texy;
-		int		color;
-		double	flrxwall;
-		double	flrywall;
-		double	dstwall;
-		double	distplr;
-		double	currdist;
-		double	weight;
-		double	currflrx;
-		double	currflry;
-		int 	floortexx;
-		int		floortexy;
-		int		chkboardpatrn;
-		int		floortexture;
-} t_rc;
+	double	camera_x;
+	double	raydirx;
+	double	raydiry;
+	int		mapx;
+	int		mapy;
+	double	sidedistx;
+	double	sidedisty;
+	double	deltadistx;
+	double	deltadisty;
+	double	pwalldst;
+	int		stepx;
+	int		stepy;
+	int		hit;
+	int		side;
+	int		lineheight;
+	int		drawstart;
+	int		drawend;
+	double	wallx;
+	int		texx;
+	double	step;
+	double	texpos;
+	int		texy;
+	int		color;
+	double	flrxwall;
+	double	flrywall;
+	double	dstwall;
+	double	distplr;
+	double	currdist;
+	double	weight;
+	double	currflrx;
+	double	currflry;
+	int		floortexx;
+	int		floortexy;
+	int		chkboardpatrn;
+	int		floortexture;
+}	t_rc;
 
 typedef struct s_data
 {
@@ -164,7 +164,7 @@ typedef struct s_data
 	double	rotspeed;
 	int		**mapito;
 	int		empty;
-} t_data;
+}	t_data;
 
 /****************************\
 *		  Functions			 *
@@ -176,7 +176,7 @@ typedef struct s_data
 
 void	create_map(char	*map, t_data *d);
 void	map_dealer(t_data *d, char *str);
-void	square_map(t_data *d, int	width);
+void	square_map(t_data *d, int width);
 void	draw_minimap(t_data *d);
 char	*fix_tabs(char *str, int *ref);
 void	start_map(t_data *d);
@@ -219,7 +219,7 @@ int		ret_error(char **map, int x, int y);
 int		key_press(int key, t_data *data);
 int		key_release(int key, t_data *data);
 int		key_hook(t_data *data);
-void 	rotate(int direction, t_data *data, double rotspeed);
+void	rotate(int direction, t_data *data, double rotspeed);
 
 /*
 ** RayCasting

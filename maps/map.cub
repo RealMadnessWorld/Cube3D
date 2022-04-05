@@ -3,8 +3,6 @@ SO ./textures/smile.xpm
 WE ./textures/siluet.xpm
 EA ./textures/hand_skull.xpm
 
- 100 71s0
-
 F 128,0,32
 C 135,206,235
 
