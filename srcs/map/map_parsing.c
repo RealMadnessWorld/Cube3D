@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarsenio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:39:28 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 17:39:30 by jarsenio         ###   ########.fr       */
+/*   Updated: 2022/04/04 22:39:50 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ int	is_image(t_data *d, char *str)
 	}
 	else if (str[0] != '1' && str[0] != '0' && str[0] != 32
 		&& str[0] != 9 && str[0] != 10 && str[0] != 0)
-		ft_err(d, "Error: Unknown symbol found in the file");
+		{
+		printf("%d\n", str[0]);
+		ft_err(d, "Error: Invalid data/file provided");
+		}
 	return (0);
 }
 
@@ -102,9 +105,9 @@ void	img_dealer(t_data *d, char *str)
 	else if (str[0] == 'E')
 		load_image(d, d->map.ea_img, str, &img);
 	else if (str[0] == 'F')
-		color_saver(d, &d->map.f_color, str);
+		color_saver(d, &d->map.f_clr, str);
 	else if (str[0] == 'C')
-		color_saver(d, &d->map.c_color, str);
+		color_saver(d, &d->map.c_clr, str);
 	else
 		ft_err(d, "Error: Please use a valid identifier (NO,SO,WE,EA,C,F)");
 }

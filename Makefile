@@ -1,4 +1,4 @@
-NAME	= cube3D
+NAME	= cub3D
 OS		= $(shell uname)
 
 MAKEFLAGS	+= -s
@@ -46,7 +46,7 @@ $(NAME): $(LIBFT) $(OBJ)
 		@mkdir -p objs
 		@mv ${OBJ} objs
 		@echo "$(_GREEN)Like Ghandi once said: \"IT'S ALIVEEEEE\"$(_RESET)"
-		@say -v Karen "Like Ghandi once said: it's alive eeeeee"
+		#@say -v Karen "Like Ghandi once said: it's alive eeeeee"
 
 $(LIBFT):
 		@${MAKE} bonus -C libft
@@ -55,7 +55,7 @@ clean:
 		@$(RM) $(OBJDIR)
 		@${MAKE} clean -C libft
 		@echo "$(_YELLOW)No, no, no, no, no... Consuela not home!$(_RESET)"
-		@say -v Joana "No, no, no, no, no... Consuela not home!"
+		#@say -v Joana "No, no, no, no, no... Consuela not home!"
 
 fclean:
 		@$(RM) $(OBJDIR)
@@ -66,7 +66,7 @@ fclean:
 		@echo "$(_RED)______________________________________________________________________________$(_RESET)"
 		@echo "$(_RED) Farewell! Someone is really going to miss you. But, it's not going to be me! $(_RESET)"
 		@echo "$(_RED)‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾$(_RESET)"
-		@say -v Karen "Farewell! Someone is really going to miss you. But, it's not going to be me!"
+		#@say -v Karen "Farewell! Someone is really going to miss you. But, it's not going to be me!"
 
 re: fclean all
 

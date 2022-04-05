@@ -6,7 +6,7 @@
 /*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:37:06 by fmeira            #+#    #+#             */
-/*   Updated: 2022/04/04 18:10:30 by fmeira           ###   ########.fr       */
+/*   Updated: 2022/04/04 20:43:22 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	init_data(t_data *d)
 	char	*(*norm)(void *, int *, int *, int *);
 
 	norm = &mlx_get_data_addr;
-	ft_bzero(d, sizeof(d));
+	ft_bzero(d, sizeof(*d));
 	d->empty = 0;
 	d->dirX = -1.0;
 	d->planeY = 0.66;
@@ -102,5 +102,5 @@ void	init_data(t_data *d)
 	d->mlx = mlx_init();
 	d->win = mlx_new_window(d->mlx, WIDTH, HEIGHT, "mlx");
 	d->img.img = mlx_new_image(d->mlx, WIDTH, HEIGHT);
-	d->img.data = (int *)norm(d->img.img, &d->img.b, &d->img.size_l, &d->img.e);
+	d->img.data = (int *)norm(d->img.img, &d->img.b, &d->img.size_l, 	&d->img.e);
 }

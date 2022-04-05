@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarsenio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:39:07 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 17:39:10 by jarsenio         ###   ########.fr       */
+/*   Updated: 2022/04/04 22:31:22 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	set_player(t_data *d, int y, int x, char c)
 static void	p_pos_err(t_data *d, int y, int x, int **newmap)
 {
 	if (d->posX && d->posY)
-		ft_err(d, "this is a single player game. ONE starting position\n");
+		ft_err(d, "this is a single player game. ONE starting position");
 	set_player(d, y, x, d->map.map[x][y]);
 	newmap[x][y] = 0;
 }
@@ -57,7 +57,7 @@ void	convert_map(t_data *d)
 		x++;
 	}
 	if (!d->posX || !d->posY)
-		ft_err(d, "Error: Missing player starting point\n");
+		ft_err(d, "Error: Missing player starting point");
 	d->mapito = newmap;
 }
 
@@ -75,7 +75,7 @@ void	map_dealer(t_data *d, char *str)
 		return ;
 	}
 	if (!check_chars(str, "	 10NEWS"))
-		ft_err(d, "Error: Weird symbol in the map...\n");
+		ft_err(d, "Error: Weird symbol in the map...");
 	str = fix_tabs(str, &tabs);
 	if ((int)ft_strlen(str) > d->map.width)
 		d->map.width = (int)ft_strlen(str);

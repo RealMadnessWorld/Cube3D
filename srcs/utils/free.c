@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarsenio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmeira <fmeira@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:07:24 by jarsenio          #+#    #+#             */
-/*   Updated: 2022/04/04 18:07:25 by jarsenio         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:54:07 by fmeira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	free_map(t_data *d)
 
 void	be_free(t_data *d)
 {
-	if (d->map.c_color)
-		free(d->map.c_color);
-	if (d->map.f_color)
-		free(d->map.f_color);
+	if (d->map.c_clr)
+		free(d->map.c_clr);
+	if (d->map.f_clr)
+		free(d->map.f_clr);
 	if (d->map.no_img)
 		free(d->map.no_img);
 	if (d->map.so_img)
