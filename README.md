@@ -19,6 +19,6 @@ The project must be done using the Ray-Casting principles and it should be a 3D 
 
 ## Documentation
 
-42 Docs - MiniLibX
+[42 Docs - MiniLibX](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
 
-Raycasting - Lode Vandevenne
+[Raycasting - Lode Vandevenne](https://lodev.org/cgtutor/raycasting.html)
