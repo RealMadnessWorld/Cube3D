@@ -27,14 +27,15 @@ The project must be done using the Ray-Casting principles and it should be a 3D 
 
     git clone https://github.com/42Paris/minilibx-linux.git
     cd minilibx-linux
+
     make
 
     sudo apt install libxext-dev libxrandr-dev libx11-dev libbsd-dev libssl-dev
     
 	cd /usr/local/man/
-    sudo mkdir man1
+	sudo mkdir man1
 
-    Return to the minilibx-linux directory:
+    (Return to the minilibx-linux directory)
 
     sudo cp man/man1/* /usr/local/man/man1/
     sudo cp libmlx.a /usr/local/lib/
@@ -42,3 +43,7 @@ The project must be done using the Ray-Casting principles and it should be a 3D 
     
     man mlx
     (Must show the minilibx manual)
+
+### Important
+
+   It was made for Mac, so may not be able to move on linux because of the key bindings
