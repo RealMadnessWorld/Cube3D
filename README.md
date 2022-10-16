@@ -1,13 +1,20 @@
-# 42_Cub3D
+<h1 align="center">
+	Cub3D
+</h1>
 
-![42_logo](https://user-images.githubusercontent.com/76601093/193692098-d4b16956-1dab-40b8-9aae-31b254efc5ee.jpg)
+<div align="center">
+	<blockquote>
+  	"This project is inspired by the world-famous Wolfenstein 3D game, which was the first FPS ever."
+	<br>
+  	"Now, it’s your turn to relive History..."
+	</blockquote>
+</div>
 
+---
 
-  > "This project is inspired by the world-famous Wolfenstein 3D game, which was the first FPS ever."
-
-  > "Now, it’s your turn to relive History..."
-
-## Description
+<h2 align="center">
+	Description
+</h2>
 
 The aim of this project is to explore ray-casting with the goal to make a dynamic view inside a maze.
 
@@ -17,13 +24,21 @@ To be able to do this 3D Game is necessary to "explore the playful practical app
 
 The project must be done using the Ray-Casting principles and it should be a 3D graphical representation from inside of a maze from a first-person perpective.
 
-## Documentation
+---
+
+<h2 align="center">
+	Documentation
+</h2>
 
 [42 Docs - MiniLibX](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
 
 [Raycasting - Lode Vandevenne](https://lodev.org/cgtutor/raycasting.html)
 
-## Installing minilibx
+---
+
+<h2 align="center">
+	How to install minilbx
+</h2>
 
     git clone https://github.com/42Paris/minilibx-linux.git
     cd minilibx-linux
@@ -44,6 +59,14 @@ The project must be done using the Ray-Casting principles and it should be a 3D 
     man mlx
     (Must show the minilibx manual)
 
-### Important
+<h2 align="center">
+	Important
+</h2>
 
    It was made for Mac, so may not be able to move on linux because of the key bindings
+
+---
+
+<div align="center">
+	<img src="https://user-images.githubusercontent.com/76601093/193692098-d4b16956-1dab-40b8-9aae-31b254efc5ee.jpg" width=250>
+</div>
