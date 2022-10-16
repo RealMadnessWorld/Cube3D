@@ -27,16 +27,6 @@ The project must be done using the Ray-Casting principles and it should be a 3D 
 ---
 
 <h2 align="center">
-	Documentation
-</h2>
-
-[42 Docs - MiniLibX](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
-
-[Raycasting - Lode Vandevenne](https://lodev.org/cgtutor/raycasting.html)
-
----
-
-<h2 align="center">
 	How to install minilbx
 </h2>
 
@@ -64,6 +54,21 @@ The project must be done using the Ray-Casting principles and it should be a 3D 
 </h2>
 
    It was made for Mac, so may not be able to move on linux because of the key bindings
+
+---
+
+<h2 align="center">
+	Documentation
+</h2>
+
+<!---
+<div align="center">
+	<a href="https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html">42 Docs - MiniLibX</a> | <a href="https://lodev.org/cgtutor/raycasting.html">Raycasting - Lode Vandevenne </a>
+</div>
+--->
+
+- [42 Docs - MinilibX](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
+- [Raycasting - Lode Vandevenne](https://lodev.org/cgtutor/raycasting.html)
 
 ---
 
