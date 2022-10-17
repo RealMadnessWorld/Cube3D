@@ -24,6 +24,10 @@ To be able to do this 3D Game is necessary to "explore the playful practical app
 
 The project must be done using the Ray-Casting principles and it should be a 3D graphical representation from inside of a maze from a first-person perpective.
 
+<img src="https://user-images.githubusercontent.com/76601093/196152674-c0c44b7b-e214-4340-954a-e763b8fc1d92.png" align="center">
+
+(image from ```scawy.cub``` (horror themed map), different maps have different themes)
+
 ---
 
 <h2 align="center">
@@ -33,9 +37,9 @@ The project must be done using the Ray-Casting principles and it should be a 3D 
     git clone https://github.com/42Paris/minilibx-linux.git
     cd minilibx-linux
 
-    make
-
     sudo apt install libxext-dev libxrandr-dev libx11-dev libbsd-dev libssl-dev
+
+    make
     
 	cd /usr/local/man/
 	sudo mkdir man1
@@ -49,11 +53,16 @@ The project must be done using the Ray-Casting principles and it should be a 3D 
     man mlx
     (Must show the minilibx manual)
 
+---
+
 <h2 align="center">
-	Important
+	How to run:
 </h2>
 
-   It was made for Mac, so may not be able to move on linux because of the key bindings
+- ```make```
+- ```./cub3D maps/scawy.cub``` (instead of ```scawy.cub``` you can choose any other map in the ```maps``` folder)
+
+IMPORTANT: This game was made for Mac, you can open the game but may not be able to move on linux because of the key bindings.
 
 ---
 
