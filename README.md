@@ -82,5 +82,6 @@ IMPORTANT: This game was made for Mac, you can open the game but may not be able
 ---
 
 <div align="center">
-	<img src="https://user-images.githubusercontent.com/76601093/193692098-d4b16956-1dab-40b8-9aae-31b254efc5ee.jpg" width=250>
+	<img src="https://user-images.githubusercontent.com/76601093/193692098-d4b16956-1dab-40b8-9aae-31b254efc5ee.jpg" width=340> <img src="https://user-images.githubusercontent.com/76601093/196162497-50fa62e6-041b-414c-b51b-1008ad06eab9.png">
+
 </div>
